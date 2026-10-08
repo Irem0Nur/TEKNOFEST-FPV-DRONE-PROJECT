@@ -4,59 +4,299 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-en="Team — GROUP GİM">Ekip — GROUP GİM</title>
-  <meta name="description" content="Ekip üyelerimiz, danışmanımız ve ekibe katılım başvurusu." data-en-content="Our team members, our advisor and how to join us.">
+  <meta name="description" content="GROUP GİM ekip üyeleri, görev dağılımı, danışmanımız ve ekibe katılım başvuru formu."
+        data-en-content="GROUP GİM team members, roles, our advisor and the application form to join the team.">
   <link rel="icon" type="image/png" href="assets/favicon-64.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Saira:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
   <script src="js/site.js" defer></script>
+  <script src="js/forms.js" defer></script>
 </head>
 <body data-page="team">
 <header id="site-header"></header>
 
 <main>
+
+  <!-- ============ SAYFA BAŞLIĞI ============ -->
   <section class="page-hero">
     <svg class="big-reticle" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width=".6" aria-hidden="true"><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="42" stroke-dasharray="1 3"/><path d="M50 2v18M50 80v18M2 50h18M80 50h18"/><path d="M8 22V8h14M78 8h14v14M92 78v14H78M22 92H8V78"/></svg>
     <div class="container">
       <nav class="breadcrumb" aria-label="Konum" data-en-aria-label="Breadcrumb"><a href="index.html" data-en="Home">Ana Sayfa</a> / <span data-en="Team">Ekip</span></nav>
       <span class="eyebrow" data-en="Team">Ekip</span>
       <h1 data-en="The people behind the drone">Drone'un arkasındaki insanlar</h1>
-      <p class="lead" data-en="Our team members, our advisor and how to join us.">Ekip üyelerimiz, danışmanımız ve ekibe katılım başvurusu.</p>
-      <div class="subnav"><a href="#ekip" data-en="Team">Ekip</a><a href="#danisman" data-en="Advisor">Danışman</a><a href="#ekibe-katil" data-en="Join the Team">Ekibe Katıl</a></div>
+      <p class="lead" data-en="Three engineering students, one advisor and room for more.">Üç mühendislik öğrencisi, bir danışman ve yeni katılımlara açık bir ekip.</p>
+      <div class="subnav">
+        <a href="#ekip" data-en="Team">Ekip</a>
+        <a href="#danisman" data-en="Advisor">Danışman</a>
+        <a href="#ekibe-katil" data-en="Join the Team">Ekibe Katıl</a>
+      </div>
     </div>
   </section>
 
+  <!-- ============ 01 EKİP ============ -->
   <section class="section" id="ekip">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">01</span>
         <h2 data-en="Team">Ekip</h2>
+        <p class="lead" data-en="Every layer of the system has an owner — from the camera to the propellers.">Sistemin her katmanının bir sorumlusu var; kameradan pervanelere kadar.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+      <div class="grid grid-3 crew">
+         <article class="panel panel--hover crew-card" data-reveal data-reveal-delay="2">
+          <div class="avatar brk ratio-4x5" aria-hidden="true"><span>G</span></div>
+          <div class="crew-body">
+            <div class="crew-tags"><span class="tag tag--key" data-en="Pilot">Pilot</span></div>
+            <h3>Gözde Doğru</h3>
+            <p class="crew-role" data-en="Hardware &amp; Flight Tests">Donanım ve Uçuş Testleri</p>
+            <p class="crew-dept mono" data-en="Computer Engineering">Bilgisayar Mühendisliği</p>
+            <ul class="crew-list">
+              <li data-en="Assembly, electronics and wiring">Montaj, elektronik ve kablolama</li>
+              <li data-en="Manual flights and test campaigns">Manuel uçuşlar ve test planları</li>
+              <li data-en="Safety checks and registrations">Güvenlik kontrolleri ve kayıt işlemleri</li>
+            </ul>
+          </div>
+        </article>
+
+
+        <article class="panel panel--hover crew-card" data-reveal data-reveal-delay="1">
+          <div class="avatar brk ratio-4x5" aria-hidden="true"><span>İ</span></div>
+          <div class="crew-body">
+            <div class="crew-tags"><span class="tag tag--key" data-en="Team Captain">Takım Kaptanı</span></div>
+            <h3>İrem Nur Çelik</h3>
+            <p class="crew-role" data-en="Image Processing &amp; AI">Görüntü İşleme ve Yapay Zekâ</p>
+            <p class="crew-dept mono" data-en="Computer Engineering">Bilgisayar Mühendisliği</p>
+            <ul class="crew-list">
+              <li data-en="Target detection model and dataset">Hedef tespit modeli ve veri seti</li>
+              <li data-en="Real-time processing on the AI module">Yapay zekâ modülünde gerçek zamanlı işleme</li>
+              <li data-en="Coordinating reports and the schedule">Raporların ve takvimin koordinasyonu</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="panel panel--hover crew-card" data-reveal data-reveal-delay="3">
+          <div class="avatar brk ratio-4x5" aria-hidden="true"><span>M</span></div>
+          <div class="crew-body">
+            <div class="crew-tags"><span class="tag" data-en="Communications Lead">İletişim Sorumlusu</span></div>
+            <h3>Melike Nur Geçkin</h3>
+            <p class="crew-role" data-en="Autonomous Control &amp; Software">Otonom Kontrol ve Yazılım</p>
+            <p class="crew-dept mono" data-en="Computer Engineering">Bilgisayar Mühendisliği</p>
+            <ul class="crew-list">
+              <li data-en="Tracking filter and control commands">Takip filtresi ve kontrol komutları</li>
+              <li data-en="Ground station and live video">Yer istasyonu ve canlı görüntü</li>
+              <li data-en="Sponsor and social media communication">Sponsor ve sosyal medya iletişimi</li>
+            </ul>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
+
+  <!-- ============ 02 DANIŞMAN ============ -->
   <section class="section section--alt" id="danisman">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">02</span>
         <h2 data-en="Advisor">Danışman</h2>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+      <article class="panel advisor" data-reveal>
+        <div class="avatar avatar--round" aria-hidden="true"><span>A</span></div>
+        <div>
+          <span class="tag tag--key" data-en="Team Advisor">Takım Danışmanı</span>
+          <h3>Ahmet Çağdaş Seçkin</h3>
+          <p class="muted" data-en="Guides the team academically throughout the project and helps us find solutions to the problems we face.">Proje boyunca ekibe akademik olarak yol gösteriyor ve karşılaştığımız sorunlara çözüm bulmamızda bize destek oluyor.</p>
+        </div>
+      </article>
     </div>
   </section>
+
+  <!-- ============ 03 EKİBE KATIL ============ -->
   <section class="section" id="ekibe-katil">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">03</span>
         <h2 data-en="Join the Team">Ekibe Katıl</h2>
+        <p class="lead" data-en="We are looking for teammates who want to build an autonomous drone with us. You don't need to know everything — you need to want to learn.">Bizimle otonom bir drone geliştirmek isteyen takım arkadaşları arıyoruz. Her şeyi bilmeniz gerekmiyor; öğrenmek istemeniz yeterli.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+            <div class="join">
+        <aside class="join-roles" data-reveal>
+          <h3 data-en="Roles we are looking for">Aradığımız roller</h3>
+          <p class="muted small" data-en="Click a role to select it in the form.">Bir role tıklayarak formda seçebilirsiniz.</p>
+          <ul class="roles">
+            <li><button type="button" class="role-btn" data-pick="Yazılım / Yapay Zekâ">
+              <b data-en="Software / AI">Yazılım / Yapay Zekâ</b>
+              <span data-en="Python, computer vision, deep learning">Python, bilgisayarlı görü, derin öğrenme</span>
+            </button></li>
+            <li><button type="button" class="role-btn" data-pick="Donanım / Elektronik">
+              <b data-en="Hardware / Electronics">Donanım / Elektronik</b>
+              <span data-en="Soldering, power systems, sensors">Lehim, güç sistemleri, sensörler</span>
+            </button></li>
+            <li><button type="button" class="role-btn" data-pick="Mekanik Tasarım">
+              <b data-en="Mechanical Design">Mekanik Tasarım</b>
+              <span data-en="CAD, 3D printing, structural design">CAD, 3D baskı, yapısal tasarım</span>
+            </button></li>
+            <li><button type="button" class="role-btn" data-pick="Medya / Sosyal Medya">
+              <b data-en="Media / Social Media">Medya / Sosyal Medya</b>
+              <span data-en="Video, photography, content">Video, fotoğraf, içerik üretimi</span>
+            </button></li>
+            <li><button type="button" class="role-btn" data-pick="Sponsorluk / Organizasyon">
+              <b data-en="Sponsorship / Organisation">Sponsorluk / Organizasyon</b>
+              <span data-en="Partnerships, planning, reports">İş birlikleri, planlama, raporlama</span>
+            </button></li>
+          </ul>
+          <p class="note" data-en="All departments and years are welcome.">Tüm bölümlerden ve sınıflardan başvurular kabul edilir.</p>
+        </aside>
+
+        <form class="gim-form" id="join-form" data-reveal data-reveal-delay="2" novalidate
+              data-subject="GROUP GİM — Ekibe Katılım Başvurusu">
+
+          <div class="gf-head">
+            <div class="gf-title">
+              <span class="gf-dot" aria-hidden="true"></span>
+              <span class="mono" data-en="APPLICATION · TEAM-01">BAŞVURU · EKİP-01</span>
+            </div>
+            <div class="gf-progress" aria-hidden="true">
+              <span class="mono gf-count">0/7</span>
+              <span class="gf-bar"><i></i></span>
+            </div>
+          </div>
+
+          <div class="gf-body">
+            <!-- 01 Kişisel bilgiler -->
+            <div class="gf-sec"><span class="mono">01</span><span data-en="About you">Sizi tanıyalım</span></div>
+            <div class="form-grid">
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/></svg>
+                <input id="j-name" name="ad_soyad" type="text" autocomplete="name" placeholder=" " required>
+                <label for="j-name"><span data-en="Full name">Ad Soyad</span> <i class="req">*</i></label>
+              </div>
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+                <input id="j-email" name="eposta" type="email" autocomplete="email" placeholder=" " required>
+                <label for="j-email"><span data-en="Email">E-posta</span> <i class="req">*</i></label>
+              </div>
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></svg>
+                <input id="j-phone" name="telefon" type="tel" autocomplete="tel" placeholder=" ">
+                <label for="j-phone"><span data-en="Phone">Telefon</span></label>
+              </div>
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg>
+                <input id="j-uni" name="universite" type="text" placeholder=" " required>
+                <label for="j-uni"><span data-en="University">Üniversite</span> <i class="req">*</i></label>
+              </div>
+              <div class="field fl field--full">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>
+                <input id="j-dept" name="bolum_sinif" type="text" placeholder=" " required>
+                <label for="j-dept"><span data-en="Department / Year">Bölüm / Sınıf</span> <i class="req">*</i></label>
+                <small class="hint" data-en="e.g. Electrical Engineering, 2nd year">Örn. Elektrik-Elektronik Mühendisliği, 2. sınıf</small>
+              </div>
+            </div>
+
+            <!-- 02 İlgi alanı -->
+            <div class="gf-sec"><span class="mono">02</span><span data-en="Where would you like to work?">Nerede çalışmak istersiniz?</span></div>
+            <fieldset class="field opt-field">
+              <legend class="sr-only" data-en="Area of interest">İlgi alanı</legend>
+              <div class="opt-grid">
+                <label class="opt">
+                  <input type="radio" name="ilgi_alani" value="Yazılım / Yapay Zekâ" required>
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>
+                    <b data-en="Software / AI">Yazılım / Yapay Zekâ</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="ilgi_alani" value="Donanım / Elektronik">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg>
+                    <b data-en="Hardware / Electronics">Donanım / Elektronik</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="ilgi_alani" value="Mekanik Tasarım">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg>
+                    <b data-en="Mechanical Design">Mekanik Tasarım</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="ilgi_alani" value="Medya / Sosyal Medya">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="m16 11 5-3v8l-5-3"/></svg>
+                    <b data-en="Media / Social">Medya / Sosyal Medya</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="ilgi_alani" value="Sponsorluk / Organizasyon">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-3 4 4 3-3h4"/><path d="M7 12l4 4M10 9l5 5"/></svg>
+                    <b data-en="Sponsorship / Organisation">Sponsorluk / Organizasyon</b>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- 03 Hakkınızda -->
+            <div class="gf-sec"><span class="mono">03</span><span data-en="Tell us a little">Biraz anlatın</span></div>
+            <div class="form-grid">
+              <div class="field fl field--full">
+                <textarea id="j-why" name="motivasyon" rows="3" maxlength="600" placeholder=" " required></textarea>
+                <label for="j-why"><span data-en="Why do you want to join?">Neden katılmak istiyorsunuz?</span> <i class="req">*</i></label>
+                <small class="counter mono" aria-hidden="true">0 / 600</small>
+              </div>
+              <div class="field fl field--full">
+                <textarea id="j-exp" name="deneyim" rows="3" maxlength="600" placeholder=" "></textarea>
+                <label for="j-exp"><span data-en="Experience (projects, competitions, tools)">Deneyimleriniz (projeler, yarışmalar, araçlar)</span></label>
+                <small class="counter mono" aria-hidden="true">0 / 600</small>
+              </div>
+              <div class="field fl field--full">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>
+                <input id="j-cv" name="cv_baglanti" type="url" inputmode="url" placeholder=" ">
+                <label for="j-cv"><span data-en="CV or portfolio link">CV veya portfolyo bağlantısı</span></label>
+                <small class="hint" data-en="Google Drive, LinkedIn or GitHub link">Google Drive, LinkedIn veya GitHub bağlantısı</small>
+              </div>
+            </div>
+
+            <!-- spam botları için gizli alan: insanlar görmez, doldurmaz -->
+            <div class="hp" aria-hidden="true"><label for="j-web">Web</label><input id="j-web" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
+
+            <label class="check">
+              <input type="checkbox" name="kvkk_onay" value="evet" required>
+              <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+              <span class="check-text" data-en="I have read the &lt;a href=&quot;kvkk.html&quot; target=&quot;_blank&quot;&gt;Privacy Notice (KVKK)&lt;/a&gt; and consent to the processing of my personal data. &lt;i class=&quot;req&quot;&gt;*&lt;/i&gt;"><a href="kvkk.html" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin işlenmesini kabul ediyorum. <i class="req">*</i></span>
+            </label>
+
+            <div class="form-foot">
+              <button class="btn btn--primary btn--submit" type="submit">
+                <span data-en="Send Application">Başvuruyu Gönder</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <p class="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <!-- Başarılı gönderim ekranı -->
+          <div class="gf-done" tabindex="-1">
+            <div class="gf-lock" aria-hidden="true">
+              <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30"/><path d="M50 6v16M50 78v16M6 50h16M78 50h16"/><path d="m38 51 8 8 16-17"/></svg>
+            </div>
+            <span class="mono gf-done-tag">LOCK · OK</span>
+            <h3 data-en="Application received!">Başvurunuz alındı!</h3>
+            <p class="muted" data-en="Thank you. We will review your application and get back to you by email soon.">Teşekkürler. Başvurunuzu inceleyip en kısa sürede e-posta ile dönüş yapacağız.</p>
+            <button class="btn btn--ghost gf-again" type="button" data-en="New application">Yeni başvuru</button>
+          </div>
+        </form>
+        
+      </div>
     </div>
   </section>
-</main>
 
+</main>
 <footer id="site-footer"></footer>
 </body>
 </html>
