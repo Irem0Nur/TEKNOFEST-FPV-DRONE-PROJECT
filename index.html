@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="tr" data-lang="tr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-en="GROUP GİM — Autonomous FPV Drone Tracking">GROUP GİM — Otonom FPV Drone Takibi</title>
+  <meta name="description" content="GROUP GİM, TEKNOFEST FPV Drone İzleme yarışması için GPS olmadan yalnızca görüntüyle hedef drone'u otonom olarak takip eden bir sistem geliştiriyor."
+        data-en-content="GROUP GİM is building a system that autonomously tracks a target drone using only vision, without GPS, for the TEKNOFEST FPV Drone Tracking competition.">
+  <link rel="icon" type="image/png" href="assets/favicon-64.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Saira:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  } }
+  </script>
+  <script>
+    // Giriş animasyonu oynayacaksa sayfa ilk çizilmeden hero'yu gizle (titreme olmasın)
+    try { if (sessionStorage.getItem("gim-intro") !== "1" && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("intro-running"); } catch (e) {}
+  </script>
+  <script src="js/site.js" defer></script>
+  <script src="js/intro.js" defer></script>
+  <script src="js/hero-feed.js" defer></script>
+  <script src="js/home.js" defer></script>
+  <script src="js/drone3d.js" defer></script>
+</head>
+<body data-page="home">
+<header id="site-header"></header>
+
+<!-- ============ GİRİŞ: anka kuşu küllerinden doğar (oturumda bir kez) ============ -->
+<div class="intro" id="intro">
+  <canvas class="intro-canvas" aria-hidden="true"></canvas>
+  <div class="intro-logo" aria-hidden="true">
+    <img class="intro-img" src="assets/logo-full.webp" width="800" height="1020" alt="">
+    <img class="sweep" src="assets/logo-full.webp" width="800" height="1020" alt="">
+  </div>
+  <button class="skip-intro" type="button" data-en="Skip">Geç</button>
+</div>
+
+<main>
+
+  <!-- ============ 1. HERO: canlı kamera takip görüntüsü ============ -->
+  <section class="hero" id="hero">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow h-in" data-en="TEKNOFEST 2027 · FPV DRONE TRACKING">TEKNOFEST 2027 · FPV DRONE İZLEME</span>
+        <h1 class="hero-title h-in" data-lock data-en="See the target.<br>Lock on.<br><em>Track it.</em>">Hedefi gör.<br>Kilitlen.<br><em>Takip et.</em></h1>
+        <p class="lead h-in" data-en="A domestic system that autonomously tracks a target drone using only vision — no GPS.">GPS olmadan, yalnızca görüntüyle hedef drone'u otonom olarak takip eden yerli bir sistem.</p>
+        <div class="btn-row h-in">
+          <a class="btn btn--primary" href="sponsorluk.html#sponsor-formu" data-lock data-en="Become Our Sponsor">Sponsorumuz Olun</a>
+          <a class="btn btn--ghost" href="#drone" data-en="Explore the Project">Projeyi Keşfet</a>
+        </div>
+      </div>
+      <div class="feed h-in" data-lock>
+        <canvas id="hud" role="img"
+                aria-label="Hedef drone'u görüntüyle takip eden sistemin canlandırması"
+                data-en-aria-label="Animation of the system tracking a target drone by vision"></canvas>
+        <div class="feed-cap mono" data-en="REPRESENTATIVE ANIMATION · CAM-01">TEMSİLİ CANLANDIRMA · KAM-01</div>
+      </div>
+    </div>
+    <a class="scroll-ind" href="#drone" aria-label="Aşağı kaydır" data-en-aria-label="Scroll down"><span></span></a>
+  </section>
+
+  <!-- ============ 2. 3D DRONE ============ -->
+  <section class="drone-sec" id="drone">
+    <div class="drone-pin">
+      <div class="container drone-grid">
+        <div class="drone-copy">
+          <span class="eyebrow" data-en="Concept design">Konsept tasarım</span>
+          <h2 data-en="A drone that thinks in images">Görüntüyle düşünen drone</h2>
+          <p class="lead" data-en="Scroll down: the drone opens up and shows you what is inside.">Aşağı kaydırın: drone açılıyor ve içinde neler olduğunu gösteriyor.</p>
+          <ol class="part-list">
+            <li data-part="0"><span class="mono">01</span><div><b data-en="Camera">Kamera</b><small data-en="Global shutter camera captures the target without distortion">Global shutter kamera hedefi bozulmadan yakalar</small></div></li>
+            <li data-part="1"><span class="mono">02</span><div><b data-en="Ducted Propellers">Kanallı Pervaneler</b><small data-en="Ducts protect the propellers and increase thrust">Kanallar pervaneleri korur, itkiyi artırır</small></div></li>
+            <li data-part="2"><span class="mono">03</span><div><b data-en="AI Module">Yapay Zekâ Modülü</b><small data-en="Detects the target 30+ times per second">Hedefi saniyede 30+ kez tespit eder</small></div></li>
+            <li data-part="3"><span class="mono">04</span><div><b data-en="Flight Controller">Uçuş Kartı</b><small data-en="Turns decisions into motor commands">Kararları motor komutlarına çevirir</small></div></li>
+            <li data-part="4"><span class="mono">05</span><div><b data-en="Impact-resistant Canopy">Darbe Dayanımlı Kapak</b><small data-en="Transparent polycarbonate shell">Şeffaf polikarbonat koruma</small></div></li>
+          </ol>
+          <div class="chips">
+            <span class="chip">≈1,66 kg</span><span class="chip">38 × 38 cm</span><span class="chip">4S LiPo</span>
+            <span class="chip chip--cherry" data-en="GPS-free positioning">GPS'siz konumlama</span>
+          </div>
+        </div>
+        <div class="drone-stage brk" data-lockable>
+          <canvas id="drone-canvas" aria-label="Döndürülebilir 3D drone modeli" data-en-aria-label="Rotatable 3D drone model" role="img"></canvas>
+          <div class="drone-fallback ph" hidden>
+            <span data-en="3D model could not be loaded">3D model yüklenemedi</span>
+          </div>
+          <div class="stage-hud mono" aria-hidden="true">
+            <span>MODEL · GIM-01</span><span class="explode-val">EXPLODE 0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. SAYILARLA YARIŞMA ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="The competition in numbers">Sayılarla yarışma</span>
+        <h2 data-en="A real test with no room for error">Hataya yer olmayan gerçek bir sınav</h2>
+        <p class="lead" data-en="The target drone manoeuvres in the field; our drone locks on and follows it fully autonomously.">Hedef drone alanda manevra yapar; bizim drone'umuz ona kilitlenir ve tamamen otonom olarak takip eder.</p>
+      </div>
+      <div class="grid grid-4 stats">
+        <div class="panel panel--hover stat" data-reveal data-reveal-delay="1">
+          <div class="stat-num"><span data-count="11">11</span></div>
+          <p data-en="unknown manoeuvres">manevra</p>
+        </div>
+        <div class="panel panel--hover stat" data-reveal data-reveal-delay="2">
+          <div class="stat-num"><span data-count="10">10</span><small data-en="min">dk</small></div>
+          <p data-en="maximum mission time">azami görev süresi</p>
+        </div>
+        <div class="panel panel--hover stat" data-reveal data-reveal-delay="3">
+          <div class="stat-num"><span data-count="0" data-from="99">0</span><small>GPS</small></div>
+          <p data-en="GNSS use is forbidden">GNSS kullanımı yasak</p>
+        </div>
+        <div class="panel panel--hover stat" data-reveal data-reveal-delay="4">
+          <div class="stat-num"><small data-en="">%</small><span data-count="75">75</span><small data-en="%"></small></div>
+          <p data-en="of the score comes from the field">puan sahadaki görevden</p>
+        </div>
+      </div>
+      <p class="more-link" data-reveal><a href="yarisma.html" data-en="Explore the competition →">Yarışmayı incele →</a></p>
+    </div>
+  </section>
+
+  <!-- ============ 4. NASIL ÇALIŞIR ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head center" data-reveal>
+        <span class="eyebrow" data-en="How it works">Nasıl çalışır</span>
+        <h2 data-en="See, recognise, predict, track">Gör, tanı, öngör, takip et</h2>
+      </div>
+      <ol class="flow" data-reveal>
+        <li class="flow-step">
+          <div class="flow-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="24" height="16" rx="3"/><circle cx="16" cy="17" r="5"/><path d="M11 9l2-3h6l2 3"/></svg></div>
+          <h3 data-en="Camera">Kamera</h3>
+          <p data-en="Captures the target without distortion">Hedefi bozulmadan yakalar</p>
+        </li>
+        <li class="flow-step">
+          <div class="flow-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 11V5h6M21 5h6v6M27 21v6h-6M11 27H5v-6"/><circle cx="16" cy="16" r="4"/></svg></div>
+          <h3 data-en="Detection">Tespit</h3>
+          <p data-en="AI finds the target 30+ times a second">Yapay zekâ hedefi saniyede 30+ kez bulur</p>
+        </li>
+        <li class="flow-step">
+          <div class="flow-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 24c6-1 8-12 14-12s6 6 10 4" stroke-dasharray="3 3"/><circle cx="4" cy="24" r="2"/><path d="M24 12l4 4-4 2"/></svg></div>
+          <h3 data-en="Tracking">Takip</h3>
+          <p data-en="Predicts the target's next move">Hedefin sonraki hareketini öngörür</p>
+        </li>
+        <li class="flow-step">
+          <div class="flow-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="9" width="14" height="14" rx="2"/><path d="M13 4v5M19 4v5M13 23v5M19 23v5M4 13h5M4 19h5M23 13h5M23 19h5"/></svg></div>
+          <h3 data-en="Control">Kontrol</h3>
+          <p data-en="Turns commands into motor motion">Komutları motor hareketine çevirir</p>
+        </li>
+        <li class="flow-step">
+          <div class="flow-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="18" r="2.5"/><path d="M10.5 12.5a8 8 0 0 0 0 11M21.5 12.5a8 8 0 0 1 0 11M6.5 8.5a14 14 0 0 0 0 19M25.5 8.5a14 14 0 0 1 0 19"/></svg></div>
+          <h3 data-en="Live Feed">Canlı Yayın</h3>
+          <p data-en="Video is streamed to the ground instantly">Görüntü anlık olarak yere aktarılır</p>
+        </li>
+      </ol>
+      <p class="more-link center" data-reveal><a href="teknik.html" data-en="Technical details →">Teknik detaylar →</a></p>
+    </div>
+  </section>
+
+  <!-- ============ 6. BİZ KİMİZ ============ -->
+  <section class="section section--alt">
+    <div class="container grid grid-2 about">
+      <div data-reveal>
+        <span class="eyebrow" data-en="Who we are">Biz kimiz</span>
+        <h2 data-en="Engineering students building domestic technology">Yerli teknoloji geliştiren mühendis adayları</h2>
+        <p class="lead" data-en="We are a team of computer engineering students. We build an autonomous tracking drone with our own image-processing software and affordable, open hardware.">Bilgisayar mühendisliği öğrencilerinden oluşan bir ekibiz. Kendi görüntü işleme yazılımımız ve uygun maliyetli, açık donanımla otonom takip yapan bir drone geliştiriyoruz.</p>
+        <div class="chips">
+          <span class="chip" data-en="Own software">Yerli yazılım</span>
+          <span class="chip" data-en="Affordable">Uygun maliyet</span>
+          <span class="chip" data-en="Open science">Açık bilim</span>
+        </div>
+        <p class="more-link"><a href="hakkimizda.html" data-en="About us →">Hakkımızda →</a></p>
+      </div>
+      <div class="ph brk ratio-16x9" data-reveal data-reveal-delay="2">
+        <svg viewBox="0 0 32 32" fill="none" stroke-width="1.5"><circle cx="16" cy="16" r="9"/><path d="M16 3v6M16 23v6M3 16h6M23 16h6"/></svg>
+                <span data-en="Team photo will be added soon">Ekip fotoğrafı sonradan eklenecektir.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. EKİP ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-en="Team">Ekip</span>
+        <h2 data-en="The people behind the drone">Drone'un arkasındaki ekip</h2>
+      </div>
+      <div class="grid grid-4 team">
+        <article class="panel panel--hover member" data-reveal data-reveal-delay="2">
+          <div class="avatar brk ratio-4x5" aria-hidden="true"><span>G</span></div>
+          <h3>Gözde Doğru</h3><p class="muted" data-en="Computer Engineering">Bilgisayar Mühendisliği</p>
+        </article>
+        <article class="panel panel--hover member" data-reveal data-reveal-delay="1">
+          <div class="avatar brk ratio-4x5" aria-hidden="true"><span>İ</span></div>
+          <h3>İrem Nur Çelik</h3><p class="muted" data-en="Computer Engineering">Bilgisayar Mühendisliği</p>
+        </article>
+        <article class="panel panel--hover member" data-reveal data-reveal-delay="3">
+          <div class="avatar brk ratio-4x5" aria-hidden="true"><span>M</span></div>
+          <h3>Melike Nur Geçkin</h3><p class="muted" data-en="Computer Engineering">Bilgisayar Mühendisliği</p>
+        </article>
+        <a class="member join" href="ekip.html#ekibe-katil" data-reveal data-reveal-delay="4">
+          <span class="plus" aria-hidden="true">+</span>
+          <h3 data-en="Join the Team">Ekibe Katıl</h3>
+          <p class="muted" data-en="Software, hardware, design or media — we are looking for you.">Yazılım, donanım, tasarım ya da medya — sizi arıyoruz.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. SPONSOR ÇAĞRISI ============ -->
+  <section class="section section--alt sponsor-call">
+    <div class="container">
+      <div class="section-head center" data-reveal>
+        <span class="eyebrow" data-en="Sponsorship">Sponsorluk</span>
+        <h2 class="big" data-en="Let's fly together.">'AN'ı Birlikte Yakalayalım.</h2>
+        <p class="lead" data-en="Put your brand on a drone that represents domestic technology on the TEKNOFEST field.">Markanızı TEKNOFEST sahasında yerli teknolojiyi temsil eden bir drone'un üzerine taşıyın.</p>
+      </div>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="slot" data-en="Your logo could be here">Burada sizin logonuz olabilir</span>
+        <span class="slot" data-en="Your logo could be here">Burada sizin logonuz olabilir</span>
+        <span class="slot" data-en="Your logo could be here">Burada sizin logonuz olabilir</span>
+        <span class="slot" data-en="Your logo could be here">Burada sizin logonuz olabilir</span>
+        <span class="slot" data-en="Your logo could be here">Burada sizin logonuz olabilir</span>
+        <span class="slot" data-en="Your logo could be here">Burada sizin logonuz olabilir</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="grid grid-3 packages">
+        <article class="panel panel--hover pkg pkg--gold" data-reveal data-reveal-delay="1">
+          <span class="pkg-tag mono" data-en="MAIN SPONSOR">ANA SPONSOR</span>
+          <h3 data-en="Gold Wing">Altın Kanat</h3>
+          <ul>
+            <li data-en="Largest logo on the drone body">Drone gövdesinde en büyük logo</li>
+            <li data-en="Logo in the site header and every video">Site başlığında ve tüm videolarda logo</li>
+            <li data-en="Logo on team apparel and a dedicated content series">Ekip kıyafetlerinde logo ve özel içerik serisi</li>
+          </ul>
+        </article>
+        <article class="panel panel--hover pkg" data-reveal data-reveal-delay="2">
+          <span class="pkg-tag mono" data-en="SPONSOR">SPONSOR</span>
+          <h3 data-en="Silver Wing">Gümüş Kanat</h3>
+          <ul>
+            <li data-en="Logo on the drone ducts">Drone kanallarında logo</li>
+            <li data-en="Logo and intro on our sponsor page">Sponsor sayfasında logo ve tanıtım</li>
+            <li data-en="Tagged in social media posts">Sosyal medya paylaşımlarında etiket</li>
+          </ul>
+        </article>
+        <article class="panel panel--hover pkg" data-reveal data-reveal-delay="3">
+          <span class="pkg-tag mono" data-en="IN-KIND">AYNİ DESTEK</span>
+          <h3 data-en="Supporter">Destekçi</h3>
+          <ul>
+            <li data-en="Parts, 3D printing or workshop support">Parça, 3D baskı veya atölye desteği</li>
+            <li data-en="Thank-you on our sponsor page">Sponsor sayfasında teşekkür</li>
+            <li data-en="Periodic progress reports">Dönemsel gelişim raporu</li>
+          </ul>
+        </article>
+      </div>
+      <div class="btn-row center-row" data-reveal>
+        <a class="btn btn--primary" href="sponsorluk.html#sponsor-formu" data-en="Request the Sponsorship Deck">Sponsorluk Sunumunu Talep Edin</a>
+        <a class="btn btn--ghost" href="sponsorluk.html#paketler" data-en="Compare packages">Paketleri karşılaştır</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="site-footer"></footer>
+</body>
+</html>
