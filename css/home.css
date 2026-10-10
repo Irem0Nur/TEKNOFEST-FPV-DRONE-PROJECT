@@ -210,6 +210,14 @@ html:not(.intro-running) .intro:not(.out):not(.open) { display: none; }
   color: var(--text);
   white-space: nowrap;
 }
+.slot--logo {
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.slot--logo:hover {
+  transform: scale(1.07);
+  border-color: var(--cherry);
+  box-shadow: 0 10px 24px rgba(123,21,48,.18);
+}
 
 .pkg { padding: 32px 28px; }
 .pkg h3 { font-size: 1.6rem; margin: 10px 0 18px; }
