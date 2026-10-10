@@ -11,7 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Saira:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
   <script src="js/site.js" defer></script>
+  <script src="js/forms.js" defer></script>
 </head>
 <body data-page="sponsorship">
 <header id="site-header"></header>
@@ -28,60 +30,423 @@
     </div>
   </section>
 
+  <!-- ============ 01 NEDEN GROUP GİM ============ -->
   <section class="section" id="neden-groupgim">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">01</span>
         <h2 data-en="Why GROUP GİM?">Neden GROUP GİM?</h2>
+        <p class="lead" data-en="Supporting us means putting your name on domestic technology at TEKNOFEST, Türkiye's largest technology festival — and on a team that reports every step it takes.">Bize destek olmak, adınızı Türkiye'nin en büyük teknoloji festivali TEKNOFEST'te yerli teknolojinin yanına yazmak ve attığı her adımı raporlayan bir ekiple yol yürümek demek.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+      <div class="grid grid-2 why-intro" data-reveal>
+        <p data-en="We are building an autonomous drone that detects and follows a target drone using only vision, without GPS. This is not just a competition entry: vision-based tracking is a real need in places where GPS is jammed, and it is a field where domestic solutions matter.">GPS olmadan, yalnızca görüntüyle hedef drone'u tespit edip takip eden otonom bir drone geliştiriyoruz. Bu yalnızca bir yarışma projesi değil: görüntü temelli takip, GPS'in bozulduğu ortamlarda gerçek bir ihtiyaç ve yerli çözümlerin önem taşıdığı bir alan.</p>
+        <p data-en="As a young team, every bit of support directly turns into a part on our drone, a test flight or a report. In return, we offer visibility, content and a transparent partnership from day one to the final.">Genç bir ekip olarak aldığımız her destek doğrudan drone'umuzdaki bir parçaya, bir test uçuşuna ya da bir rapora dönüşüyor. Karşılığında ilk günden finale kadar görünürlük, içerik ve şeffaf bir iş birliği sunuyoruz.</p>
+      </div>
+
+      <div class="grid grid-3 benefits">
+        <article class="panel panel--hover value" data-reveal data-reveal-delay="1">
+          <div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 27V9l10-5 10 5v18"/><path d="M12 27v-8h8v8M3 27h26"/></svg></div>
+          <h3 data-en="Festival visibility">Festival görünürlüğü</h3>
+          <p data-en="Your brand is on the field with us at TEKNOFEST, in front of visitors, industry representatives and the press.">Markanız TEKNOFEST sahasında bizimle birlikte; ziyaretçilerin, sektör temsilcilerinin ve basının önünde.</p>
+        </article>
+        <article class="panel panel--hover value" data-reveal data-reveal-delay="2">
+          <div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c1 2 2.5 3 4 3s3-1 4-3l7 3 2 7-4 1v13H7V15l-4-1 2-7z"/></svg></div>
+          <h3 data-en="Logo on team apparel">Ekip kıyafetlerinde logo</h3>
+          <p data-en="Your logo is on the team apparel we wear at TEKNOFEST, during tests and in our videos.">Logonuz TEKNOFEST'te, testlerde ve videolarımızda giydiğimiz ekip kıyafetlerinde yer alıyor.</p>
+        </article>
+        <article class="panel panel--hover value" data-reveal data-reveal-delay="3">
+          <div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="18" height="16" rx="3"/><path d="m22 14 6-4v12l-6-4"/></svg></div>
+          <h3 data-en="Digital content">Dijital içerik</h3>
+          <p data-en="We share our progress through test videos and posts on our website, YouTube, Instagram and LinkedIn, and we mention our sponsors in them.">Gelişimimizi web sitemizde, YouTube, Instagram ve LinkedIn'de test videoları ve paylaşımlarla anlatıyor, sponsorlarımızı bu içeriklerde anıyoruz.</p>
+        </article>
+        <article class="panel panel--hover value" data-reveal data-reveal-delay="1">
+          <div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="11" r="5"/><path d="M6 28c1.5-5.5 5.5-8.5 10-8.5s8.5 3 10 8.5"/><path d="m22 5 2-2M25 9h3"/></svg></div>
+          <h3 data-en="Access to talent">Yetenek erişimi</h3>
+          <p data-en="Meet engineering students working on AI, image processing and UAVs while they are still at university.">Yapay zekâ, görüntü işleme ve İHA alanında çalışan mühendis adaylarıyla daha üniversitedeyken tanışın.</p>
+        </article>
+        <article class="panel panel--hover value" data-reveal data-reveal-delay="2">
+          <div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4l3.2 7.2 7.8.8-5.9 5.2 1.8 7.8L16 21l-6.9 4 1.8-7.8L5 12l7.8-.8z"/></svg></div>
+          <h3 data-en="Contribution to national technology">Milli teknolojiye katkı</h3>
+          <p data-en="Be part of a domestic solution developed for a real defence need — and show it as part of your social responsibility.">Gerçek bir savunma ihtiyacına yönelik geliştirilen yerli bir çözümün parçası olun; bunu sosyal sorumluluğunuzun bir parçası olarak gösterin.</p>
+        </article>
+        <article class="panel panel--hover value" data-reveal data-reveal-delay="3">
+          <div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h10l6 6v18H9z"/><path d="M19 4v6h6M13 16h8M13 20h8M13 24h5"/></svg></div>
+          <h3 data-en="Transparent reporting">Şeffaf raporlama</h3>
+          <p data-en="We report how your support is spent, and send you regular progress reports with photos and test results.">Desteğinizin nereye harcandığını raporluyor; fotoğraf ve test sonuçlarıyla düzenli gelişim raporları gönderiyoruz.</p>
+        </article>
+      </div>
     </div>
   </section>
+
+  <!-- ============ 02 SPONSORLUK PAKETLERİ ============ -->
   <section class="section section--alt" id="paketler">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">02</span>
         <h2 data-en="Sponsorship Packages">Sponsorluk Paketleri</h2>
+        <p class="lead" data-en="Three ways to support us. Package details and amounts are shared in our sponsorship deck.">Bize destek olmanın üç yolu. Paket detayları ve tutarlar sponsorluk sunumumuzda paylaşılır.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+      <div class="grid grid-3 packs">
+        <article class="panel pack pack--gold" data-reveal data-reveal-delay="1">
+          <span class="pack-tag mono" data-en="MAIN SPONSOR">ANA SPONSOR</span>
+          <h3 data-en="Gold Wing">Altın Kanat</h3>
+          <p class="muted" data-en="Our strongest partner, visible on every channel from the first test to the final.">İlk testten finale kadar her kanalda görünen en güçlü ortağımız.</p>
+          <ul class="pack-list">
+            <li data-en="Largest logo on the chest of team apparel">Ekip kıyafetlerinde göğüste en büyük logo</li>
+            <li data-en="Logo in the website header">Web sitesi başlığında logo</li>
+            <li data-en="Logo in every video">Tüm videolarda logo</li>
+            <li data-en="Dedicated content series">Size özel içerik serisi</li>
+            <li data-en="Invitation to the final">Final davetiyesi</li>
+          </ul>
+          <button type="button" class="btn btn--primary pack-btn" data-pick="Altın Kanat" data-en="Choose this package">Bu paketi seç</button>
+        </article>
+
+        <article class="panel pack" data-reveal data-reveal-delay="2">
+          <span class="pack-tag mono" data-en="SPONSOR">SPONSOR</span>
+          <h3 data-en="Silver Wing">Gümüş Kanat</h3>
+          <p class="muted" data-en="Visibility on our team apparel and digital channels.">Ekip kıyafetlerimizde ve dijital kanallarımızda görünürlük.</p>
+          <ul class="pack-list">
+            <li data-en="Logo on the sleeve of team apparel">Ekip kıyafetlerinde kolda logo</li>
+            <li data-en="Logo and intro on the sponsor page">Sponsor sayfasında logo ve tanıtım</li>
+            <li data-en="Tagged in social media posts">Sosyal medya paylaşımlarında etiket</li>
+            <li data-en="Periodic progress reports">Dönemsel gelişim raporu</li>
+          </ul>
+          <button type="button" class="btn btn--ghost pack-btn" data-pick="Gümüş Kanat" data-en="Choose this package">Bu paketi seç</button>
+        </article>
+
+        <article class="panel pack" data-reveal data-reveal-delay="3">
+          <span class="pack-tag mono" data-en="IN-KIND">AYNİ DESTEK</span>
+          <h3 data-en="Supporter">Destekçi</h3>
+          <p class="muted" data-en="Support with parts, services or facilities instead of funds.">Maddi destek yerine parça, hizmet veya imkân desteği.</p>
+          <ul class="pack-list">
+            <li data-en="Parts, 3D printing or workshop support">Parça, 3D baskı veya atölye desteği</li>
+            <li data-en="Name on the back of team apparel">Ekip kıyafetlerinde sırtta isim</li>
+            <li data-en="Thank-you on the sponsor page">Sponsor sayfasında teşekkür</li>
+            <li data-en="Periodic progress reports">Dönemsel gelişim raporu</li>
+          </ul>
+          <button type="button" class="btn btn--ghost pack-btn" data-pick="Destekçi / Ayni Destek" data-en="Choose this package">Bu paketi seç</button>
+        </article>
+      </div>
+
+      <div class="table-wrap compare" data-reveal>
+        <table class="specs">
+          <thead>
+            <tr><th data-en="What you get">Neler var?</th><th data-en="Gold Wing">Altın Kanat</th><th data-en="Silver Wing">Gümüş Kanat</th><th data-en="Supporter">Destekçi</th></tr>
+          </thead>
+          <tbody>
+            <tr><td data-en="Logo on team apparel">Ekip kıyafetlerinde logo</td><td><span class="cell-txt" data-en="Chest">Göğüs</span></td><td><span class="cell-txt" data-en="Sleeve">Kol</span></td><td><span class="cell-txt" data-en="Back">Sırt</span></td></tr>
+            <tr><td data-en="Logo in the website header">Web sitesi başlığında logo</td><td><span class="yes">✓</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td></tr>
+            <tr><td data-en="Logo on the sponsor page">Sponsor sayfasında logo</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td data-en="Logo in videos">Videolarda logo</td><td><span class="yes">✓</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td></tr>
+            <tr><td data-en="Social media mentions">Sosyal medya paylaşımları</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="no">—</span></td></tr>
+            <tr><td data-en="Periodic progress report">Dönemsel gelişim raporu</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+            <tr><td data-en="Invitation to the final">Final davetiyesi</td><td><span class="yes">✓</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="src mono" data-reveal data-en="Packages can be tailored to your needs.">Paketler ihtiyaçlarınıza göre birlikte şekillendirilebilir.</p>
     </div>
   </section>
+
+  <!-- ============ 03 BİR PARÇAYI SAHİPLEN ============ -->
   <section class="section" id="parca-sahiplen">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">03</span>
         <h2 data-en="Adopt a Component">Bir Parçayı Sahiplen</h2>
+        <p class="lead" data-en="Cover a specific component of our drone and your name is associated with that part in our reports, test videos and content.">Drone'umuzun belirli bir parçasını üstlenin; adınız o parçayla birlikte raporlarımızda, test videolarımızda ve içeriklerimizde anılsın.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+      <div class="grid grid-3 parts">
+        <article class="panel panel--hover part" data-reveal data-reveal-delay="1">
+          <div class="part-head"><div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="24" height="16" rx="3"/><circle cx="16" cy="17" r="5"/><path d="M11 9l2-3h6l2 3"/></svg></div><span class="mono part-no">P-01</span></div>
+          <h3 data-en="Camera">Kamera</h3>
+          <p data-en="The global shutter camera: the drone's eye that sees the target.">Global shutter kamera: hedefi gören, drone'un gözü.</p>
+          <button type="button" class="part-btn" data-pick="Bir Parçayı Sahiplen" data-en="Adopt this part →">Bu parçayı sahiplen →</button>
+        </article>
+        <article class="panel panel--hover part" data-reveal data-reveal-delay="2">
+          <div class="part-head"><div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="14" height="14" rx="2"/><path d="M13 4v5M19 4v5M13 23v5M19 23v5M4 13h5M4 19h5M23 13h5M23 19h5"/></svg></div><span class="mono part-no">P-02</span></div>
+          <h3 data-en="AI Module">Yapay Zekâ Modülü</h3>
+          <p data-en="The computer that finds the target in the image in real time.">Hedefi görüntüde gerçek zamanlı bulan bilgisayar.</p>
+          <button type="button" class="part-btn" data-pick="Bir Parçayı Sahiplen" data-en="Adopt this part →">Bu parçayı sahiplen →</button>
+        </article>
+        <article class="panel panel--hover part" data-reveal data-reveal-delay="3">
+          <div class="part-head"><div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="20" height="20" rx="3"/><circle cx="16" cy="16" r="4"/><path d="M16 6v3M16 23v3M6 16h3M23 16h3"/></svg></div><span class="mono part-no">P-03</span></div>
+          <h3 data-en="Flight Controller">Uçuş Kartı</h3>
+          <p data-en="The brain that keeps the drone stable and executes commands.">Drone'u dengede tutan ve komutları uygulayan beyin.</p>
+          <button type="button" class="part-btn" data-pick="Bir Parçayı Sahiplen" data-en="Adopt this part →">Bu parçayı sahiplen →</button>
+        </article>
+        <article class="panel panel--hover part" data-reveal data-reveal-delay="1">
+          <div class="part-head"><div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="22" height="12" rx="2"/><path d="M26 14h2v4h-2M9 16h4M11 14v4"/></svg></div><span class="mono part-no">P-04</span></div>
+          <h3 data-en="Battery">Batarya</h3>
+          <p data-en="The 6S LiPo battery that powers every flight.">Her uçuşa güç veren 6S LiPo batarya.</p>
+          <button type="button" class="part-btn" data-pick="Bir Parçayı Sahiplen" data-en="Adopt this part →">Bu parçayı sahiplen →</button>
+        </article>
+        <article class="panel panel--hover part" data-reveal data-reveal-delay="2">
+          <div class="part-head"><div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="2"/><path d="M16 14c-1-5 0-8 2-8s1 5-2 8zM16 18c1 5 0 8-2 8s-1-5 2-8z"/></svg></div><span class="mono part-no">P-05</span></div>
+          <h3 data-en="Ducted Propellers">Kanallı Pervaneler</h3>
+          <p data-en="Motors, propellers and protective ducts that carry the drone.">Drone'u taşıyan motorlar, pervaneler ve koruyucu kanallar.</p>
+          <button type="button" class="part-btn" data-pick="Bir Parçayı Sahiplen" data-en="Adopt this part →">Bu parçayı sahiplen →</button>
+        </article>
+        <article class="panel panel--hover part" data-reveal data-reveal-delay="3">
+          <div class="part-head"><div class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4 5 9.5v13L16 28l11-5.5v-13z"/><path d="M5 9.5 16 15l11-5.5M16 15v13"/></svg></div><span class="mono part-no">P-06</span></div>
+          <h3 data-en="Frame">Gövde</h3>
+          <p data-en="The 3D-printed frame and impact-resistant canopy that hold everything together.">Her şeyi bir arada tutan 3D baskı gövde ve darbe dayanımlı kapak.</p>
+          <button type="button" class="part-btn" data-pick="Bir Parçayı Sahiplen" data-en="Adopt this part →">Bu parçayı sahiplen →</button>
+        </article>
+      </div>
+      <p class="src mono" data-reveal data-en="You can mention the part you want to adopt in the message field of the form.">Sahiplenmek istediğiniz parçayı formdaki mesaj alanında belirtebilirsiniz.</p>
     </div>
   </section>
+
+  <!-- ============ 04 LOGO YERLEŞİMİ ============ -->
   <section class="section section--alt" id="logo-yerlesimi">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">04</span>
         <h2 data-en="Logo Placement">Logo Yerleşimi</h2>
+        <p class="lead" data-en="Where your logo will appear, by package. We do not place sponsor logos on the drone itself.">Logonuzun paketinize göre nerede yer alacağı. Drone'un kendisine sponsor logosu yerleştirmiyoruz.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+      <div class="grid grid-2 placement">
+        <figure class="panel placement-fig" data-reveal>
+          <svg viewBox="0 0 400 230" role="img" aria-label="Ekip kıyafeti ön ve arka görünüm: logo yerleşim alanları" data-en-aria-label="Team apparel front and back view: logo placement areas">
+            <g stroke="#8E959E" stroke-width="2" stroke-linejoin="round" fill="#1C1F24">
+              <path transform="translate(20 22)" d="M55 10Q80 30 105 10L140 22L160 60L132 72L128 62V170H32V62L28 72L0 60L20 22Z"/>
+              <path transform="translate(220 22)" d="M55 10Q80 18 105 10L140 22L160 60L132 72L128 62V170H32V62L28 72L0 60L20 22Z"/>
+            </g>
+            <!-- A: göğüs (Altın Kanat) -->
+            <rect x="106" y="66" width="44" height="30" rx="5" fill="#7B1530"/>
+            <text x="128" y="87" text-anchor="middle" font-family="Saira, sans-serif" font-weight="700" font-size="18" fill="#fff">A</text>
+            <!-- B: kol (Gümüş Kanat) -->
+            <circle cx="40" cy="64" r="13" fill="#fff" stroke="#5E0F24" stroke-width="3"/>
+            <text x="40" y="69" text-anchor="middle" font-family="Saira, sans-serif" font-weight="700" font-size="14" fill="#5E0F24">B</text>
+            <!-- Arka: takım adı + C (Destekçi) -->
+            <text x="300" y="80" text-anchor="middle" font-family="Saira, sans-serif" font-weight="700" font-size="17" fill="#DADDE1">GROUP GİM</text>
+            <rect x="260" y="130" width="80" height="42" rx="5" fill="#C9CED5"/>
+            <text x="300" y="157" text-anchor="middle" font-family="Saira, sans-serif" font-weight="700" font-size="16" fill="#1C1F24">C</text>
+            <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#4A5059" text-anchor="middle" letter-spacing="2">
+              <text x="100" y="222" data-en="FRONT">ÖN</text><text x="300" y="222" data-en="BACK">ARKA</text>
+            </g>
+          </svg>
+          <figcaption class="mono" data-en="Representative drawing — exact sizes will be set in the final apparel design.">Temsilî çizim — kesin ölçüler kıyafet tasarımında belirlenecek.</figcaption>
+        </figure>
+
+        <div data-reveal data-reveal-delay="2">
+          <ul class="zones">
+            <li>
+              <span class="zone zone--a">A</span>
+              <div><b data-en="Chest · Gold Wing">Göğüs · Altın Kanat</b><p data-en="The largest and most visible area on the front of our team apparel.">Ekip kıyafetinin önündeki en büyük ve en görünür alan.</p></div>
+            </li>
+            <li>
+              <span class="zone zone--b">B</span>
+              <div><b data-en="Sleeve · Silver Wing">Kol · Gümüş Kanat</b><p data-en="A logo on the sleeve, visible in photos and videos.">Kol üzerinde, fotoğraf ve videolarda görünen logo alanı.</p></div>
+            </li>
+            <li>
+              <span class="zone zone--c">C</span>
+              <div><b data-en="Back · Supporter">Sırt · Destekçi</b><p data-en="Supporter names listed together under our team name.">Takım adımızın altında destekçilerimizin birlikte yer aldığı alan.</p></div>
+            </li>
+          </ul>
+          <h3 class="col-title" data-en="Digital channels">Dijital kanallarda</h3>
+          <ul class="rule-list">
+            <li data-en="Website: header (Gold Wing) and sponsor page (all)">Web sitesi: başlık (Altın Kanat) ve sponsor sayfası (tümü)</li>
+            <li data-en="Videos: opening and closing frames">Videolar: açılış ve kapanış kareleri</li>
+            <li data-en="Social media posts and reports">Sosyal medya paylaşımları ve raporlar</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- ============ 05 SSS ============ -->
   <section class="section" id="sss">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">05</span>
         <h2 data-en="FAQ">SSS</h2>
+        <p class="lead" data-en="The questions sponsors ask us most.">Sponsorların bize en çok sorduğu sorular.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+      <div class="faq" data-reveal>
+        <details>
+          <summary data-en="How does the sponsorship process work?">Sponsorluk süreci nasıl işler?</summary>
+          <p data-en="You fill in the form below, we send you our sponsorship deck, we meet to agree on the details and then we start working together. Your logo is added to our channels as soon as the agreement is made.">Aşağıdaki formu doldurursunuz, size sponsorluk sunumumuzu göndeririz, detayları konuşmak için görüşürüz ve ardından iş birliğine başlarız. Anlaşma yapıldığı anda logonuz kanallarımıza eklenir.</p>
+        </details>
+        <details>
+          <summary data-en="Can we provide in-kind support?">Ayni destek verebilir miyiz?</summary>
+          <p data-en="Yes. Parts, 3D printing, workshop access, equipment or services are all valuable to us. The Supporter package is designed for this.">Evet. Parça, 3D baskı, atölye imkânı, ekipman ya da hizmet desteği bizim için çok değerli. Destekçi paketi bunun için tasarlandı.</p>
+        </details>
+        <details>
+          <summary data-en="How is the reporting done?">Raporlama nasıl yapılıyor?</summary>
+          <p data-en="We send our sponsors regular progress reports with photos, test results and a breakdown of how the support was spent.">Sponsorlarımıza fotoğraflar, test sonuçları ve desteğin nasıl harcandığını gösteren dökümle birlikte düzenli gelişim raporları gönderiyoruz.</p>
+        </details>
+        <details>
+          <summary data-en="Where will our logo appear?">Logomuz nerelerde görünecek?</summary>
+          <p data-en="It depends on your package: on our team apparel, on our website, in our videos and in social media posts. You can see the details in the Logo Placement section.">Paketinize göre ekip kıyafetlerimizde, web sitemizde, videolarımızda ve sosyal medya paylaşımlarında. Detayları Logo Yerleşimi bölümünde görebilirsiniz.</p>
+        </details>
+        <details>
+          <summary data-en="Will our logo be on the drone?">Logomuz drone'un üzerinde yer alacak mı?</summary>
+          <p data-en="No. We do not place sponsor logos on the drone itself; your visibility comes from our team apparel, website, videos and social media.">Hayır. Drone'un kendisine sponsor logosu yerleştirmiyoruz; görünürlüğünüz ekip kıyafetlerimiz, web sitemiz, videolarımız ve sosyal medya hesaplarımız üzerinden sağlanıyor.</p>
+        </details>
+        <details>
+          <summary data-en="When should we decide?">Ne zamana kadar karar vermemiz gerekiyor?</summary>
+          <p data-en="The earlier, the better: support at the start lets us build the prototype on time, and your logo appears in more content. You can join us at any stage, though.">Ne kadar erken, o kadar iyi: başlangıçtaki destek prototipi zamanında üretmemizi sağlıyor ve logonuz daha fazla içerikte yer alıyor. Yine de her aşamada aramıza katılabilirsiniz.</p>
+        </details>
+        <details>
+          <summary data-en="Can individuals support you?">Bireysel olarak destek olunabilir mi?</summary>
+          <p data-en="Of course. Write to us through the form or by email and we will find the most suitable way together.">Elbette. Form ya da e-posta üzerinden bize yazın, en uygun yolu birlikte bulalım.</p>
+        </details>
+      </div>
     </div>
   </section>
+
+  <!-- ============ 06 SPONSOR FORMU ============ -->
   <section class="section section--alt" id="sponsor-formu">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">06</span>
         <h2 data-en="Sponsor Form">Sponsor Formu</h2>
+        <p class="lead" data-en="Leave your details and we will send you our sponsorship deck.">Bilgilerinizi bırakın, sponsorluk sunumumuzu size gönderelim.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+      <div class="join">
+        <aside class="join-roles" data-reveal>
+          <h3 data-en="What happens next?">Sonra ne olacak?</h3>
+          <ol class="next-steps">
+            <li><b data-en="We receive your request">Talebinizi alırız</b><span data-en="We get back to you as soon as possible.">En kısa sürede dönüş yaparız.</span></li>
+            <li><b data-en="We send our deck">Sunumumuzu göndeririz</b><span data-en="Package details and amounts are in it.">Paket detayları ve tutarlar içinde.</span></li>
+            <li><b data-en="We meet">Görüşürüz</b><span data-en="Online or face to face, as you prefer.">Çevrim içi ya da yüz yüze, nasıl isterseniz.</span></li>
+            <li><b data-en="We fly together">Birlikte uçarız</b><span data-en="Your logo appears on our apparel and channels.">Logonuz kıyafetlerimizde ve kanallarımızda yer alır.</span></li>
+          </ol>
+          <p class="note" data-en="You can also write directly to groupgim033135@gmail.com">Doğrudan groupgim033135@gmail.com adresine de yazabilirsiniz.</p>
+        </aside>
+
+        <form class="gim-form" id="sponsor-form" data-reveal data-reveal-delay="2" novalidate
+              data-subject="GROUP GİM — Sponsorluk Talebi">
+          <div class="gf-head">
+            <div class="gf-title">
+              <span class="gf-dot" aria-hidden="true"></span>
+              <span class="mono" data-en="REQUEST · SPONSOR-01">TALEP · SPONSOR-01</span>
+            </div>
+            <div class="gf-progress" aria-hidden="true">
+              <span class="mono gf-count">0/5</span>
+              <span class="gf-bar"><i></i></span>
+            </div>
+          </div>
+
+          <div class="gf-body">
+            <div class="gf-sec"><span class="mono">01</span><span data-en="Contact details">İletişim bilgileri</span></div>
+            <div class="form-grid">
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/></svg>
+                <input id="s-name" name="ad_soyad" type="text" autocomplete="name" placeholder=" " required>
+                <label for="s-name"><span data-en="Full name">Ad Soyad</span> <i class="req">*</i></label>
+              </div>
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16M15 9h4a1 1 0 0 1 1 1v11M3 21h18M8 8h3M8 12h3M8 16h3"/></svg>
+                <input id="s-org" name="kurum" type="text" autocomplete="organization" placeholder=" " required>
+                <label for="s-org"><span data-en="Company / Organisation">Kurum / Firma</span> <i class="req">*</i></label>
+              </div>
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                <input id="s-pos" name="pozisyon" type="text" autocomplete="organization-title" placeholder=" ">
+                <label for="s-pos"><span data-en="Position">Pozisyon</span></label>
+              </div>
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+                <input id="s-email" name="eposta" type="email" autocomplete="email" placeholder=" " required>
+                <label for="s-email"><span data-en="Email">E-posta</span> <i class="req">*</i></label>
+              </div>
+              <div class="field fl field--full">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></svg>
+                <input id="s-phone" name="telefon" type="tel" autocomplete="tel" placeholder=" ">
+                <label for="s-phone"><span data-en="Phone">Telefon</span></label>
+              </div>
+            </div>
+
+            <div class="gf-sec"><span class="mono">02</span><span data-en="Type of support">Destek türü</span></div>
+            <fieldset class="field opt-field">
+              <legend class="sr-only" data-en="Type of support">Destek türü</legend>
+              <div class="opt-grid">
+                <label class="opt">
+                  <input type="radio" name="destek_turu" value="Altın Kanat" required>
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.4 6L12 16.2 6.5 19.3l1.4-6L3.3 9.2l6.1-.6z"/></svg>
+                    <b data-en="Gold Wing">Altın Kanat</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="destek_turu" value="Gümüş Kanat">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
+                    <b data-en="Silver Wing">Gümüş Kanat</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="destek_turu" value="Destekçi / Ayni Destek">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+                    <b data-en="Supporter / In-kind">Destekçi / Ayni</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="destek_turu" value="Bir Parçayı Sahiplen">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg>
+                    <b data-en="Adopt a Component">Bir Parçayı Sahiplen</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="destek_turu" value="Henüz karar vermedim">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17v.01"/></svg>
+                    <b data-en="Not decided yet">Henüz karar vermedim</b>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="gf-sec"><span class="mono">03</span><span data-en="Your message">Mesajınız</span></div>
+            <div class="form-grid">
+              <div class="field fl field--full">
+                <textarea id="s-msg" name="mesaj" rows="4" maxlength="800" placeholder=" "></textarea>
+                <label for="s-msg"><span data-en="Message (e.g. the part you want to adopt)">Mesaj (ör. sahiplenmek istediğiniz parça)</span></label>
+                <small class="counter mono" aria-hidden="true">0 / 800</small>
+              </div>
+            </div>
+
+            <div class="hp" aria-hidden="true"><label for="s-web">Web</label><input id="s-web" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
+
+            <label class="check">
+              <input type="checkbox" name="kvkk_onay" value="evet" required>
+              <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+              <span class="check-text" data-en="I have read the &lt;a href=&quot;kvkk.html&quot; target=&quot;_blank&quot;&gt;Privacy Notice (KVKK)&lt;/a&gt; and consent to the processing of my personal data. &lt;i class=&quot;req&quot;&gt;*&lt;/i&gt;"><a href="kvkk.html" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin işlenmesini kabul ediyorum. <i class="req">*</i></span>
+            </label>
+
+            <div class="form-foot">
+              <button class="btn btn--primary btn--submit" type="submit">
+                <span data-en="Request the Deck">Sunumu Talep Et</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <p class="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="gf-done" tabindex="-1">
+            <div class="gf-lock" aria-hidden="true">
+              <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30"/><path d="M50 6v16M50 78v16M6 50h16M78 50h16"/><path d="m38 51 8 8 16-17"/></svg>
+            </div>
+            <span class="mono gf-done-tag">LOCK · OK</span>
+            <h3 data-en="Request received!">Talebiniz alındı!</h3>
+            <p class="muted" data-en="Thank you for your interest. We will send our sponsorship deck to your email soon.">İlginiz için teşekkürler. Sponsorluk sunumumuzu en kısa sürede e-posta adresinize göndereceğiz.</p>
+            <button class="btn btn--ghost gf-again" type="button" data-en="New request">Yeni talep</button>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
+
 </main>
 
 <footer id="site-footer"></footer>

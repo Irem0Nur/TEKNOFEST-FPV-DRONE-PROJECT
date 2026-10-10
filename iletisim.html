@@ -11,7 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Saira:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
   <script src="js/site.js" defer></script>
+  <script src="js/forms.js" defer></script>
 </head>
 <body data-page="contact">
 <header id="site-header"></header>
@@ -28,22 +30,201 @@
     </div>
   </section>
 
+  <!-- ============ 01 İLETİŞİM FORMU ============ -->
   <section class="section" id="iletisim-formu">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">01</span>
         <h2 data-en="Contact Form">İletişim Formu</h2>
+        <p class="lead" data-en="Fill in the form and your message goes straight to our team's inbox.">Formu doldurun, mesajınız doğrudan ekibimizin e-posta kutusuna ulaşsın.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+      <div class="join">
+        <aside class="join-roles contact-side" data-reveal>
+          <a class="panel panel--hover contact-card" href="mailto:groupgim033135@gmail.com">
+            <span class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="24" height="18" rx="3"/><path d="m5 9 11 8 11-8"/></svg></span>
+            <span>
+              <small class="mono" data-en="EMAIL">E-POSTA</small>
+              <b>groupgim033135@gmail.com</b>
+            </span>
+          </a>
+          <div class="panel contact-card">
+            <span class="value-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="22" height="22" rx="6"/><circle cx="16" cy="16" r="5"/><path d="M22.5 9.5v.01"/></svg></span>
+            <span>
+              <small class="mono" data-en="SOCIAL MEDIA">SOSYAL MEDYA</small>
+              <b data-en="Our accounts are coming soon">Hesaplarımız çok yakında</b>
+            </span>
+          </div>
+
+          <h3 class="col-title" data-en="Looking for something specific?">Aradığınız başka bir şey mi?</h3>
+          <ul class="quick-links">
+            <li><a href="sponsorluk.html#sponsor-formu"><span data-en="Become a sponsor">Sponsor olmak istiyorum</span><i aria-hidden="true">→</i></a></li>
+            <li><a href="ekip.html#ekibe-katil"><span data-en="Join the team">Ekibe katılmak istiyorum</span><i aria-hidden="true">→</i></a></li>
+            <li><a href="#medya-kiti"><span data-en="Press and media kit">Basın ve medya kiti</span><i aria-hidden="true">→</i></a></li>
+          </ul>
+        </aside>
+
+        <form class="gim-form" id="contact-form" data-reveal data-reveal-delay="2" novalidate
+              data-subject="GROUP GİM — İletişim Formu">
+          <div class="gf-head">
+            <div class="gf-title">
+              <span class="gf-dot" aria-hidden="true"></span>
+              <span class="mono" data-en="MESSAGE · CONTACT-01">MESAJ · İLETİŞİM-01</span>
+            </div>
+            <div class="gf-progress" aria-hidden="true">
+              <span class="mono gf-count">0/5</span>
+              <span class="gf-bar"><i></i></span>
+            </div>
+          </div>
+
+          <div class="gf-body">
+            <div class="gf-sec"><span class="mono">01</span><span data-en="Your details">Bilgileriniz</span></div>
+            <div class="form-grid">
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/></svg>
+                <input id="c-name" name="ad_soyad" type="text" autocomplete="name" placeholder=" " required>
+                <label for="c-name"><span data-en="Full name">Ad Soyad</span> <i class="req">*</i></label>
+              </div>
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+                <input id="c-email" name="eposta" type="email" autocomplete="email" placeholder=" " required>
+                <label for="c-email"><span data-en="Email">E-posta</span> <i class="req">*</i></label>
+              </div>
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></svg>
+                <input id="c-phone" name="telefon" type="tel" autocomplete="tel" placeholder=" ">
+                <label for="c-phone"><span data-en="Phone">Telefon</span></label>
+              </div>
+              <div class="field fl">
+                <svg class="f-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16M15 9h4a1 1 0 0 1 1 1v11M3 21h18M8 8h3M8 12h3M8 16h3"/></svg>
+                <input id="c-org" name="kurum" type="text" autocomplete="organization" placeholder=" ">
+                <label for="c-org"><span data-en="Company / School">Kurum / Okul</span></label>
+              </div>
+            </div>
+
+            <div class="gf-sec"><span class="mono">02</span><span data-en="Subject">Konu</span></div>
+            <fieldset class="field opt-field">
+              <legend class="sr-only" data-en="Subject">Konu</legend>
+              <div class="opt-grid">
+                <label class="opt">
+                  <input type="radio" name="konu" value="Genel soru" required>
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17v.01"/></svg>
+                    <b data-en="General question">Genel soru</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="konu" value="İş birliği">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 12 4-4 4 3 3-3 7 6M7 8v7l4 4M14 8l3 7-3 4"/></svg>
+                    <b data-en="Partnership">İş birliği</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="konu" value="Sponsorluk">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.4 6L12 16.2 6.5 19.3l1.4-6L3.3 9.2l6.1-.6z"/></svg>
+                    <b data-en="Sponsorship">Sponsorluk</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="konu" value="Basın / Medya">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg>
+                    <b data-en="Press / Media">Basın / Medya</b>
+                  </span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="konu" value="Diğer">
+                  <span class="opt-box">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="18" cy="12" r="1.5"/></svg>
+                    <b data-en="Other">Diğer</b>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="gf-sec"><span class="mono">03</span><span data-en="Your message">Mesajınız</span></div>
+            <div class="form-grid">
+              <div class="field fl field--full">
+                <textarea id="c-msg" name="mesaj" rows="5" maxlength="1000" placeholder=" " required></textarea>
+                <label for="c-msg"><span data-en="Your message">Mesajınız</span> <i class="req">*</i></label>
+                <small class="counter mono" aria-hidden="true">0 / 1000</small>
+              </div>
+            </div>
+
+            <div class="hp" aria-hidden="true"><label for="c-web">Web</label><input id="c-web" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
+
+            <label class="check">
+              <input type="checkbox" name="kvkk_onay" value="evet" required>
+              <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+              <span class="check-text" data-en="I have read the &lt;a href=&quot;kvkk.html&quot; target=&quot;_blank&quot;&gt;Privacy Notice (KVKK)&lt;/a&gt; and consent to the processing of my personal data. &lt;i class=&quot;req&quot;&gt;*&lt;/i&gt;"><a href="kvkk.html" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin işlenmesini kabul ediyorum. <i class="req">*</i></span>
+            </label>
+
+            <div class="form-foot">
+              <button class="btn btn--primary btn--submit" type="submit">
+                <span data-en="Send Message">Mesajı Gönder</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <p class="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="gf-done" tabindex="-1">
+            <div class="gf-lock" aria-hidden="true">
+              <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30"/><path d="M50 6v16M50 78v16M6 50h16M78 50h16"/><path d="m38 51 8 8 16-17"/></svg>
+            </div>
+            <span class="mono gf-done-tag">LOCK · OK</span>
+            <h3 data-en="Message received!">Mesajınız alındı!</h3>
+            <p class="muted" data-en="Thank you for reaching out. We will get back to you as soon as possible.">Bize yazdığınız için teşekkürler. En kısa sürede size dönüş yapacağız.</p>
+            <button class="btn btn--ghost gf-again" type="button" data-en="New message">Yeni mesaj</button>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
+
+  <!-- ============ 02 MEDYA KİTİ ============ -->
   <section class="section section--alt" id="medya-kiti">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">02</span>
         <h2 data-en="Media Kit">Medya Kiti</h2>
+        <p class="lead" data-en="Our logo, colours and a short introduction for news, posts and presentations.">Haber, paylaşım ve sunumlarda kullanabileceğiniz logomuz, renklerimiz ve kısa tanıtım metnimiz.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+      <div class="grid grid-2 kit">
+        <article class="panel kit-logo" data-reveal data-reveal-delay="1">
+          <div class="kit-preview"><img src="assets/logo-full.png" alt="GROUP GİM logosu" data-en-alt="GROUP GİM logo" width="800" height="1020"></div>
+          <h3 data-en="Full logo">Tam logo</h3>
+          <p class="muted" data-en="PNG with transparent background.">Şeffaf arka planlı PNG.</p>
+          <a class="btn btn--ghost btn--sm" href="assets/logo-full.png" download="groupgim-logo.png" data-en="Download">İndir</a>
+        </article>
+        <article class="panel kit-logo" data-reveal data-reveal-delay="2">
+          <div class="kit-preview"><img src="assets/logo-mark.png" alt="GROUP GİM simgesi" data-en-alt="GROUP GİM symbol"></div>
+          <h3 data-en="Symbol">Simge</h3>
+          <p class="muted" data-en="For small sizes and profile pictures.">Küçük boyutlar ve profil fotoğrafları için.</p>
+          <a class="btn btn--ghost btn--sm" href="assets/logo-mark.png" download="groupgim-simge.png" data-en="Download">İndir</a>
+        </article>
+      </div>
+
+      <div class="grid grid-2 kit kit-info">
+        <div data-reveal>
+          <h3 class="col-title" data-en="Colours">Renkler</h3>
+          <ul class="swatches">
+            <li><span style="background:#7B1530"></span><b data-en="Cherry">Kiraz</b><code>#7B1530</code></li>
+            <li><span style="background:#DADDE1"></span><b data-en="Steel">Çelik</b><code>#DADDE1</code></li>
+            <li><span style="background:#1C1F24"></span><b data-en="Graphite">Grafit</b><code>#1C1F24</code></li>
+            <li><span style="background:#8E959E"></span><b data-en="Iron">Demir</b><code>#8E959E</code></li>
+          </ul>
+          <p class="src mono" data-en="Typefaces: Saira (headings), IBM Plex Sans (text)">Yazı tipleri: Saira (başlıklar), IBM Plex Sans (metin)</p>
+        </div>
+        <div data-reveal data-reveal-delay="2">
+          <h3 class="col-title" data-en="Short introduction">Kısa tanıtım</h3>
+          <blockquote class="panel kit-quote" data-en="GROUP GİM is a university team developing an autonomous drone that detects and follows a target drone using only vision, without GPS, for the TEKNOFEST FPV Drone Tracking Competition.">GROUP GİM, TEKNOFEST FPV Drone İzleme Yarışması için GPS kullanmadan, yalnızca görüntüyle hedef drone'u tespit edip takip eden otonom bir drone geliştiren bir üniversite takımıdır.</blockquote>
+          <p class="muted" data-en="For press requests, please choose “Press / Media” in the form above or write to groupgim033135@gmail.com.">Basın talepleriniz için yukarıdaki formda "Basın / Medya" konusunu seçin ya da groupgim033135@gmail.com adresine yazın.</p>
+        </div>
+      </div>
     </div>
   </section>
 </main>
