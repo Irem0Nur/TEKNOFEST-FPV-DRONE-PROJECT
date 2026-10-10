@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-en="Technical — GROUP GİM">Teknik — GROUP GİM</title>
-  <meta name="description" content="GROUP GİM otonom takip drone'unun sistem mimarisi: görüntü işleme, GPS'siz konumlama, otonom kontrol ve canlı görüntü aktarımı."
-        data-en-content="System architecture of GROUP GİM's autonomous tracking drone: image processing, GPS-free positioning, autonomous control and live video.">
+  <meta name="description" content="GROUP GİM otonom takip drone'unun sistem mimarisi: görüntü işleme, görüntüden mesafe tahmini, GPS'siz konumlama, otonom kontrol ve canlı görüntü aktarımı."
+        data-en-content="System architecture of GROUP GİM's autonomous tracking drone: image processing, vision-based distance estimation, GPS-free positioning, autonomous control and live video.">
   <link rel="icon" type="image/png" href="assets/favicon-64.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +19,6 @@
 <header id="site-header"></header>
 
 <main>
-
-  <!-- ============ SAYFA BAŞLIĞI ============ -->
   <section class="page-hero">
     <svg class="big-reticle" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width=".6" aria-hidden="true"><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="42" stroke-dasharray="1 3"/><path d="M50 2v18M50 80v18M2 50h18M80 50h18"/><path d="M8 22V8h14M78 8h14v14M92 78v14H78M22 92H8V78"/></svg>
     <div class="container">
@@ -31,6 +29,7 @@
       <div class="subnav">
         <a href="#sistem-mimarisi" data-en="System Architecture">Sistem Mimarisi</a>
         <a href="#goruntu-isleme" data-en="Image Processing">Görüntü İşleme</a>
+        <a href="#mesafe-tahmini" data-en="Distance Estimation">Mesafe Tahmini</a>
         <a href="#gpssiz-konumlama" data-en="GPS-free Positioning">GPS'siz Konumlama</a>
         <a href="#otonom-kontrol" data-en="Autonomous Control">Otonom Kontrol</a>
         <a href="#canli-goruntu" data-en="Live Video">Canlı Görüntü</a>
@@ -51,25 +50,27 @@
       <figure class="arch" data-reveal>
         <div class="arch-lane">
           <span class="lane-tag mono" data-en="PERCEPTION">ALGILAMA</span>
-          <div class="node"><small class="mono">01</small><b data-en="Camera">Kamera</b><span data-en="Global shutter">Global shutter</span></div>
+          <div class="node"><small class="mono">01</small><b data-en="Camera">Kamera</b><span data-en="Image of the target">Hedefin görüntüsü</span></div>
           <i class="arrow" aria-hidden="true"></i>
-          <div class="node node--key"><small class="mono">02</small><b data-en="AI detection">Yapay zekâ tespiti</b><span>Raspberry Pi 5 + Hailo</span></div>
+          <div class="node node--key"><small class="mono">02</small><b data-en="AI detection">Yapay zekâ tespiti</b><span data-en="Where is the target?">Hedef nerede?</span></div>
           <i class="arrow" aria-hidden="true"></i>
-          <div class="node node--key"><small class="mono">03</small><b data-en="Motion prediction">Hareket öngörüsü</b><span data-en="Tracking filter">Takip filtresi</span></div>
+          <div class="node node--key"><small class="mono">03</small><b data-en="Distance estimation">Mesafe tahmini</b><span data-en="How far is it?">Ne kadar uzakta?</span></div>
+          <i class="arrow" aria-hidden="true"></i>
+          <div class="node node--key"><small class="mono">04</small><b data-en="Motion prediction">Hareket öngörüsü</b><span data-en="Where will it go?">Nereye gidecek?</span></div>
         </div>
         <div class="arch-turn" aria-hidden="true"></div>
         <div class="arch-lane">
           <span class="lane-tag mono" data-en="CONTROL">KONTROL</span>
-          <div class="node"><small class="mono">04</small><b data-en="Flight controller">Uçuş kartı</b><span>Pixhawk 6C</span></div>
+          <div class="node"><small class="mono">05</small><b data-en="Flight controller">Uçuş kartı</b><span data-en="Stability and commands">Denge ve komutlar</span></div>
           <i class="arrow" aria-hidden="true"></i>
-          <div class="node"><small class="mono">05</small><b data-en="Motor drivers">Motor sürücüleri</b><span>4-in-1 ESC</span></div>
+          <div class="node"><small class="mono">06</small><b data-en="Motor drivers">Motor sürücüleri</b><span data-en="Power to the motors">Motorlara güç</span></div>
           <i class="arrow" aria-hidden="true"></i>
-          <div class="node"><small class="mono">06</small><b data-en="Motors">Motorlar</b><span data-en="4 × ducted 5&quot;">4 × kanallı 5"</span></div>
+          <div class="node"><small class="mono">07</small><b data-en="Motors">Motorlar</b><span data-en="4 × ducted propellers">4 × kanallı pervane</span></div>
         </div>
         <div class="arch-side">
-          <div class="node node--side"><b data-en="Optical flow + lidar">Optik akış + lidar</b><span data-en="Position &amp; altitude → flight controller">Konum ve irtifa → uçuş kartı</span></div>
-          <div class="node node--side"><b data-en="FPV camera + VTX">FPV kamera + VTX</b><span data-en="Live video → ground station">Canlı görüntü → yer istasyonu</span></div>
-          <div class="node node--side"><b data-en="ELRS radio">ELRS kumanda</b><span data-en="Pilot control + fail-safe">Pilot kontrolü + failsafe</span></div>
+          <div class="node node--side"><b data-en="Positioning sensors">Konum sensörleri</b><span data-en="Position &amp; altitude → flight controller">Konum ve irtifa → uçuş kartı</span></div>
+          <div class="node node--side"><b data-en="FPV camera + transmitter">FPV kamera + verici</b><span data-en="Live video → ground station">Canlı görüntü → yer istasyonu</span></div>
+          <div class="node node--side"><b data-en="Radio control">Kumanda</b><span data-en="Pilot control + fail-safe">Pilot kontrolü + failsafe</span></div>
         </div>
         <figcaption class="mono" data-en="Figure 1 — High-level system architecture">Şekil 1 — Üst seviye sistem mimarisi</figcaption>
       </figure>
@@ -84,7 +85,7 @@
         <h2 data-en="Image Processing">Görüntü İşleme</h2>
         <p class="lead" data-en="Everything starts with seeing the target clearly.">Her şey hedefi net görmekle başlıyor.</p>
         <p data-en="We use a global shutter camera: it captures the whole frame at the same instant, so a fast-moving drone does not appear bent or smeared as it would with an ordinary (rolling shutter) camera.">Global shutter kamera kullanıyoruz: Kare tek bir anda bütün olarak çekildiği için hızlı hareket eden bir drone, sıradan (rolling shutter) kameralardaki gibi eğilmiş ya da bulanık görünmüyor.</p>
-        <p data-en="Each frame is processed on the drone itself. A deep-learning-based detector, accelerated by the AI module, finds the target in the image and marks its position. Our goal is to do this more than 30 times per second.">Her kare drone'un üzerinde işleniyor. Yapay zekâ modülüyle hızlandırılan derin öğrenme tabanlı bir tespit modeli, hedefi görüntüde bulup konumunu işaretliyor. Hedefimiz bunu saniyede 30'dan fazla kez yapmak.</p>
+        <p data-en="Each frame is processed on the drone itself. A deep-learning-based detector finds the target in the image and marks its position. Our goal is to do this more than 30 times per second.">Her kare drone'un üzerinde işleniyor. Derin öğrenme tabanlı bir tespit modeli hedefi görüntüde bulup konumunu işaretliyor. Hedefimiz bunu saniyede 30'dan fazla kez yapmak.</p>
         <ul class="kv">
           <li><span data-en="Sensor">Sensör</span><b data-en="Global shutter camera">Global shutter kamera</b></li>
           <li><span data-en="Processing">İşleme</span><b data-en="On board, real time">Drone üzerinde, gerçek zamanlı</b></li>
@@ -98,100 +99,121 @@
     </div>
   </section>
 
-  <!-- ============ 03 GPS'SİZ KONUMLAMA ============ -->
-  <section class="section" id="gpssiz-konumlama">
+  <!-- ============ 03 MESAFE TAHMİNİ ============ -->
+  <section class="section" id="mesafe-tahmini">
     <div class="container topic topic--rev" data-reveal>
       <div class="topic-text">
         <span class="eyebrow mono">03</span>
+        <h2 data-en="Distance from the Image">Görüntüden Mesafe Tahmini</h2>
+        <p class="lead" data-en="We estimate the distance between the two drones from the camera image alone, without an extra sensor.">İki drone arasındaki mesafeyi ek bir sensör kullanmadan, yalnızca kamera görüntüsünden tahmin ediyoruz.</p>
+        <p data-en="Knowing how far away the target is matters as much as knowing where it is: it lets the drone follow at a safe, steady distance instead of falling behind or getting too close.">Hedefin ne kadar uzakta olduğunu bilmek, nerede olduğunu bilmek kadar önemli: Drone bu sayede hedefin gerisinde kalmadan ya da ona fazla yaklaşmadan, güvenli ve sabit bir mesafede takip edebiliyor.</p>
+        <p data-en="Doing this with the camera we already use keeps the drone lighter and simpler. We make the estimate reliable with camera calibration and tests at known distances.">Bunu zaten kullandığımız kamerayla yapmak drone'u daha hafif ve sade tutuyor. Tahminin güvenilirliğini kamera kalibrasyonu ve bilinen mesafelerde yaptığımız testlerle sağlıyoruz.</p>
+        <ul class="kv">
+          <li><span data-en="Method">Yöntem</span><b data-en="Image-based estimation">Görüntü tabanlı tahmin</b></li>
+          <li><span data-en="Extra sensor">Ek sensör</span><b data-en="Not needed">Gerekmiyor</b></li>
+          <li><span data-en="Purpose">Amaç</span><b data-en="Safe following distance">Güvenli takip mesafesi</b></li>
+        </ul>
+      </div>
+      <figure class="ph brk ratio-4x5 topic-fig">
+        <svg viewBox="0 0 32 32" fill="none" stroke-width="1.5"><circle cx="7" cy="16" r="3"/><circle cx="25" cy="16" r="3"/><path d="M11 16h10M18 13l3 3-3 3M14 13l-3 3 3 3"/></svg>
+        <figcaption data-en="Figure 3 — Distance test (will be added)">Şekil 3 — Mesafe testi (eklenecek)</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ 04 GPS'SİZ KONUMLAMA ============ -->
+  <section class="section section--alt" id="gpssiz-konumlama">
+    <div class="container topic" data-reveal>
+      <div class="topic-text">
+        <span class="eyebrow mono">04</span>
         <h2 data-en="GPS-free Positioning">GPS'siz Konumlama</h2>
         <p class="lead" data-en="GNSS is not allowed on the drone. So how does it know where it is?">Drone'da GNSS kullanmak yasak. Peki nerede olduğunu nasıl biliyor?</p>
-        <p data-en="An optical flow sensor looks at the ground and measures how the drone moves sideways; a lidar measures the distance to the ground precisely. Together they let the flight controller hold position and altitude without any satellite signal.">Optik akış sensörü yere bakarak drone'un yatayda nasıl kaydığını ölçüyor; lidar ise yere olan mesafeyi hassas biçimde ölçüyor. İkisi birlikte, uçuş kartının hiçbir uydu sinyali olmadan konumu ve irtifayı korumasını sağlıyor.</p>
+        <p data-en="Downward-facing sensors look at the ground: one measures how the drone moves sideways using optical flow, another measures its height above the ground. Together they let the flight controller hold position and altitude without any satellite signal.">Yere bakan sensörler bu işi üstleniyor: Biri optik akış yöntemiyle drone'un yatayda nasıl kaydığını, diğeri yerden yüksekliğini ölçüyor. İkisi birlikte, uçuş kartının hiçbir uydu sinyali olmadan konumu ve irtifayı korumasını sağlıyor.</p>
         <p data-en="This is also what makes the concept valuable outside the competition: a system that does not depend on GPS keeps working where GPS is jammed.">Konsepti yarışma dışında da değerli kılan şey bu: GPS'e bağlı olmayan bir sistem, GPS'in bozulduğu yerde de çalışmaya devam ediyor.</p>
         <ul class="kv">
           <li><span data-en="Horizontal">Yatay</span><b data-en="Optical flow">Optik akış</b></li>
-          <li><span data-en="Vertical">Dikey</span><b data-en="Lidar rangefinder">Lidar mesafe ölçer</b></li>
+          <li><span data-en="Vertical">Dikey</span><b data-en="Height above ground">Yerden yükseklik ölçümü</b></li>
           <li><span>GNSS</span><b data-en="None (forbidden)">Yok (yasak)</b></li>
         </ul>
       </div>
       <figure class="ph brk ratio-4x5 topic-fig">
         <svg viewBox="0 0 32 32" fill="none" stroke-width="1.5"><path d="M4 26h24"/><path d="M16 6v14M12 16l4 4 4-4"/><path d="M8 26l2-4M24 26l-2-4"/></svg>
-        <figcaption data-en="Figure 3 — Sensor placement (will be added)">Şekil 3 — Sensör yerleşimi (eklenecek)</figcaption>
+        <figcaption data-en="Figure 4 — Sensor placement (will be added)">Şekil 4 — Sensör yerleşimi (eklenecek)</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- ============ 04 OTONOM KONTROL ============ -->
-  <section class="section section--alt" id="otonom-kontrol">
-    <div class="container topic" data-reveal>
+  <!-- ============ 05 OTONOM KONTROL ============ -->
+  <section class="section" id="otonom-kontrol">
+    <div class="container topic topic--rev" data-reveal>
       <div class="topic-text">
-        <span class="eyebrow mono">04</span>
+        <span class="eyebrow mono">05</span>
         <h2 data-en="Autonomous Control">Otonom Kontrol</h2>
         <p class="lead" data-en="Seeing the target is not enough; the drone has to follow it smoothly.">Hedefi görmek yetmez; drone'un onu yumuşak ve kararlı biçimde izlemesi gerekir.</p>
         <p data-en="A tracking filter combines successive detections and predicts where the target will be next. This keeps tracking stable even when a frame is missed or the target changes direction suddenly.">Bir takip filtresi ardışık tespitleri birleştirip hedefin bir sonraki konumunu öngörüyor. Böylece bir kare kaçırıldığında ya da hedef aniden yön değiştirdiğinde bile takip kararlı kalıyor.</p>
-        <p data-en="The companion computer turns this into movement commands and sends them to the flight controller, aiming to keep the target centred in the image at a safe distance. The pilot can take control back at any moment, and the drone has fail-safe behaviour if the radio link is lost.">Yardımcı bilgisayar bunu hareket komutlarına çevirip uçuş kartına gönderiyor; amaç hedefi görüntünün ortasında ve güvenli bir mesafede tutmak. Pilot kontrolü her an geri alabiliyor; kumanda bağlantısı koparsa drone'un failsafe davranışı devreye giriyor.</p>
+        <p data-en="The companion computer turns this into movement commands: the target's position in the image tells the drone which way to turn, and the distance estimated from the image tells it whether to speed up or slow down. If the target gets closer than the safe following distance, the drone slows down or backs off. The pilot can take control back at any moment, and the drone has fail-safe behaviour if the radio link is lost.">Yardımcı bilgisayar bunu hareket komutlarına çeviriyor: Hedefin görüntüdeki konumu drone'a hangi yöne döneceğini, görüntüden tahmin edilen mesafe ise hızlanması mı yavaşlaması mı gerektiğini söylüyor. Hedef güvenli takip mesafesinden daha fazla yaklaşırsa drone yavaşlıyor ya da geri çekiliyor. Pilot kontrolü her an geri alabiliyor; kumanda bağlantısı koparsa drone'un failsafe davranışı devreye giriyor.</p>
         <ul class="kv">
-          <li><span data-en="Prediction">Öngörü</span><b data-en="Tracking filter">Takip filtresi</b></li>
-          <li><span data-en="Commands">Komutlar</span><b data-en="Companion computer → flight controller">Yardımcı bilgisayar → uçuş kartı</b></li>
-          <li><span data-en="Safety">Güvenlik</span><b data-en="Manual takeover + fail-safe">Manuel devralma + failsafe</b></li>
+          <li><span data-en="Direction">Yön</span><b data-en="Target position in the image">Hedefin görüntüdeki konumu</b></li>
+          <li><span data-en="Speed">Hız</span><b data-en="Distance from the image">Görüntüden tahmin edilen mesafe</b></li>
+          <li><span data-en="Safety">Güvenlik</span><b data-en="Safe distance + manual takeover + fail-safe">Güvenli mesafe + manuel devralma + failsafe</b></li>
         </ul>
       </div>
       <figure class="ph brk ratio-4x5 topic-fig">
         <svg viewBox="0 0 32 32" fill="none" stroke-width="1.5"><path d="M4 24c6-1 8-12 14-12s6 6 10 4" stroke-dasharray="3 3"/><circle cx="4" cy="24" r="2"/><path d="M24 12l4 4-4 2"/></svg>
-        <figcaption data-en="Figure 4 — Tracking test (will be added)">Şekil 4 — Takip testi (eklenecek)</figcaption>
+        <figcaption data-en="Figure 5 — Tracking test (will be added)">Şekil 5 — Takip testi (eklenecek)</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- ============ 05 CANLI GÖRÜNTÜ ============ -->
-  <section class="section" id="canli-goruntu">
-    <div class="container topic topic--rev" data-reveal>
+  <!-- ============ 06 CANLI GÖRÜNTÜ ============ -->
+  <section class="section section--alt" id="canli-goruntu">
+    <div class="container topic" data-reveal>
       <div class="topic-text">
-        <span class="eyebrow mono">05</span>
+        <span class="eyebrow mono">06</span>
         <h2 data-en="Live Video">Canlı Görüntü</h2>
         <p class="lead" data-en="The referees see what the drone sees, live.">Hakemler, drone'un gördüğünü canlı olarak görüyor.</p>
-        <p data-en="The specification requires the drone's camera image to be streamed live to a screen at the control point and recorded. A separate FPV camera and video transmitter send the image to the ground; a 5.8 GHz receiver on the ground computer displays and records it.">Şartname, drone'un kamera görüntüsünün kontrol noktasındaki bir ekrana canlı aktarılmasını ve kaydedilmesini istiyor. Ayrı bir FPV kamera ve görüntü vericisi (VTX) görüntüyü yere gönderiyor; yer bilgisayarındaki 5,8 GHz alıcı onu ekrana yansıtıp kaydediyor.</p>
+        <p data-en="The specification requires the drone's camera image to be streamed live to a screen at the control point and recorded. A separate FPV camera and video transmitter send the image to the ground, where it is displayed and recorded.">Şartname, drone'un kamera görüntüsünün kontrol noktasındaki bir ekrana canlı aktarılmasını ve kaydedilmesini istiyor. Ayrı bir FPV kamera ve görüntü vericisi görüntüyü yere gönderiyor; yer istasyonunda ekrana yansıtılıp kaydediliyor.</p>
         <p data-en="Live transmission alone is worth 10 points in the mission score, and the recording must be shared with the referees within 10 minutes after the run.">Canlı aktarım tek başına görev puanında 10 puan değerinde; kayıt ise yarışmadan sonra 10 dakika içinde hakemlerle paylaşılmak zorunda.</p>
         <ul class="kv">
           <li><span data-en="Camera">Kamera</span><b data-en="FPV camera">FPV kamera</b></li>
-          <li><span data-en="Link">Bağlantı</span><b data-en="VTX → 5.8 GHz receiver">VTX → 5,8 GHz alıcı</b></li>
+          <li><span data-en="Link">Bağlantı</span><b data-en="Analogue video link">Analog görüntü bağlantısı</b></li>
           <li><span data-en="Output">Çıktı</span><b data-en="Live screen + recording">Canlı ekran + kayıt</b></li>
         </ul>
       </div>
       <figure class="ph brk ratio-4x5 topic-fig">
         <svg viewBox="0 0 32 32" fill="none" stroke-width="1.5"><rect x="4" y="7" width="24" height="15" rx="2"/><path d="M12 27h8M16 22v5"/><circle cx="16" cy="14.5" r="3"/></svg>
-        <figcaption data-en="Figure 5 — Ground station screen (will be added)">Şekil 5 — Yer istasyonu ekranı (eklenecek)</figcaption>
+        <figcaption data-en="Figure 6 — Ground station screen (will be added)">Şekil 6 — Yer istasyonu ekranı (eklenecek)</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- ============ 06 TEKNİK ÖZELLİKLER ============ -->
-  <section class="section section--alt" id="teknik-ozellikler">
+  <!-- ============ 07 TEKNİK ÖZELLİKLER ============ -->
+  <section class="section" id="teknik-ozellikler">
     <div class="container">
       <div class="section-head" data-reveal>
-        <span class="eyebrow mono">06</span>
+        <span class="eyebrow mono">07</span>
         <h2 data-en="Specifications">Teknik Özellikler</h2>
-        <p class="lead" data-en="Target values of the concept design, and how they match the specification.">Konsept tasarımın hedef değerleri ve şartnameyle uyumu.</p>
+        <p class="lead" data-en="Our design approach and how it meets the specification.">Tasarım yaklaşımımız ve şartnameyle uyumu.</p>
       </div>
       <div class="table-wrap" data-reveal>
         <table class="specs">
           <thead>
-            <tr><th data-en="Feature">Özellik</th><th data-en="Value">Değer</th><th data-en="Specification">Şartname</th></tr>
+            <tr><th data-en="Feature">Özellik</th><th data-en="Our approach">Yaklaşımımız</th><th data-en="Specification">Şartname</th></tr>
           </thead>
           <tbody>
-            <tr><td data-en="Dimensions">Boyut</td><td>≈ 38 × 38 × 12 cm</td><td data-en="≤ 15 inches">≤ 15 inç</td></tr>
-            <tr><td data-en="Weight">Ağırlık</td><td>≈ 1,66 kg</td><td><span class="ok" data-en="Max İHA-1 ✓">En fazla İHA-1 ✓</span></td></tr>
-            <tr><td data-en="Propulsion">İtki</td><td data-en="4 × 5&quot; ducted propellers, 2207 motors">4 × 5" kanallı pervane, 2207 motor</td><td><span class="ok" data-en="Electric ✓">Elektrikli ✓</span></td></tr>
-            <tr><td data-en="Energy">Enerji</td><td data-en="6S LiPo (commercial pack)">6S LiPo (ticari paket)</td><td><span class="ok" data-en="Commercial battery ✓">Ticari batarya ✓</span></td></tr>
-            <tr><td data-en="Flight controller">Uçuş kartı</td><td>Pixhawk 6C</td><td>—</td></tr>
-            <tr><td data-en="AI computer">Yapay zekâ</td><td>Raspberry Pi 5 + Hailo</td><td>—</td></tr>
-            <tr><td data-en="Positioning">Konumlama</td><td data-en="Optical flow + lidar">Optik akış + lidar</td><td><span class="ok" data-en="No GNSS ✓">GNSS yok ✓</span></td></tr>
+            <tr><td data-en="Size">Boyut</td><td data-en="Compact quadcopter">Kompakt dört rotorlu</td><td><span class="ok" data-en="≤ 15 inches ✓">≤ 15 inç ✓</span></td></tr>
+            <tr><td data-en="Weight class">Ağırlık sınıfı</td><td>İHA-1</td><td><span class="ok" data-en="Max İHA-1 ✓">En fazla İHA-1 ✓</span></td></tr>
+            <tr><td data-en="Propulsion">İtki</td><td data-en="Electric, 4 ducted propellers">Elektrikli, 4 kanallı pervane</td><td><span class="ok" data-en="Electric ✓">Elektrikli ✓</span></td></tr>
+            <tr><td data-en="Energy">Enerji</td><td data-en="Commercial battery">Ticari batarya</td><td><span class="ok" data-en="Commercial battery ✓">Ticari batarya ✓</span></td></tr>
+            <tr><td data-en="Positioning">Konumlama</td><td data-en="Optical flow + height measurement">Optik akış + yükseklik ölçümü</td><td><span class="ok" data-en="No GNSS ✓">GNSS yok ✓</span></td></tr>
+            <tr><td data-en="Target detection">Hedef tespiti</td><td data-en="On-board deep learning">Drone üzerinde derin öğrenme</td><td><span class="ok" data-en="Autonomous ✓">Otonom ✓</span></td></tr>
+            <tr><td data-en="Target distance">Hedef mesafesi</td><td data-en="Estimated from the camera image">Kamera görüntüsünden tahmin ediliyor</td><td>—</td></tr>
             <tr><td data-en="Video">Görüntü</td><td data-en="Live FPV stream + recording">Canlı FPV yayın + kayıt</td><td><span class="ok" data-en="Live + recorded ✓">Canlı + kayıt ✓</span></td></tr>
-            <tr><td data-en="Radio">Kumanda</td><td data-en="ELRS with fail-safe">ELRS, failsafe</td><td><span class="ok" data-en="Fail-safe ✓">Failsafe ✓</span></td></tr>
-            <tr><td data-en="Frame">Gövde</td><td data-en="PLA+ / PETG, polycarbonate canopy">PLA+ / PETG, polikarbonat kapak</td><td>—</td></tr>
+            <tr><td data-en="Radio">Kumanda</td><td data-en="Manual takeover + fail-safe">Manuel devralma + failsafe</td><td><span class="ok" data-en="Fail-safe ✓">Failsafe ✓</span></td></tr>
           </tbody>
         </table>
       </div>
-      <p class="src mono" data-reveal data-en="Concept design values; final values will be confirmed in the Critical Design Report.">Konsept tasarım değerleridir; kesin değerler Kritik Tasarım Raporu'nda netleşecektir.</p>
+      <p class="src mono" data-reveal data-en="Component details are not shared publicly; we share them with our sponsors in our deck.">Bileşen ayrıntıları herkese açık paylaşılmamaktadır; sponsorlarımızla sunumumuzda paylaşıyoruz.</p>
 
       <div class="refs" data-reveal>
         <h3 data-en="Sources">Kaynaklar</h3>
@@ -209,7 +231,7 @@
       <div class="panel cta-band" data-reveal>
         <div>
           <h2 data-en="Want to see it fly?">Uçarken görmek ister misiniz?</h2>
-          <p class="muted" data-en="Support our tests and put your name on a component.">Testlerimize destek olun, bir parçanın üzerine adınızı yazdırın.</p>
+          <p class="muted" data-en="Support our tests and adopt a component of our drone.">Testlerimize destek olun, drone'umuzun bir parçasını sahiplenin.</p>
         </div>
         <div class="btn-row">
           <a class="btn btn--primary" href="sponsorluk.html#parca-sahiplen" data-en="Adopt a Component">Bir Parçayı Sahiplen</a>

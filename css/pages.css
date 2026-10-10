@@ -512,3 +512,18 @@ a.contact-card:hover b { color: var(--cherry); }
   border-radius: 10px; background: linear-gradient(145deg, var(--steel-light), var(--steel-dark)); border: 1px solid var(--border);
 }
 .kit-preview img { max-height: 180px; width: auto; }
+
+
+/* =========================================================
+   TEKNİK · GÖRÜNTÜDEN MESAFE
+   ========================================================= */
+.formula { margin: 20px 0; padding: 18px 22px; border-radius: 10px; background: rgba(255,255,255,.55); border: 1px solid var(--border); border-left: 3px solid var(--cherry); display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.formula-eq { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 500; color: var(--graphite); display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+.frac { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.2; }
+.frac span:first-child { border-bottom: 2px solid var(--graphite); padding: 0 6px 2px; }
+.frac span:last-child { padding-top: 2px; }
+.formula-key { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; font-size: .88rem; color: var(--text-muted); }
+.formula-key b { display: inline-block; width: 18px; font-family: var(--font-mono); color: var(--cherry); }
+.dist-fig { margin: 0; padding: clamp(18px, 3vw, 28px); }
+.dist-fig svg { width: 100%; height: auto; display: block; }
+.dist-fig figcaption { margin-top: 10px; font-size: .76rem; color: var(--text-muted); }
