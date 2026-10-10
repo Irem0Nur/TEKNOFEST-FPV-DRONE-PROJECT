@@ -9,7 +9,18 @@
   if (!cv) return;
   var c = cv.getContext("2d");
   var REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var G = "#1C1F24", I = "#8E959E", CH = "#7B1530";
+    /* Renkler temaya göre (açık / karanlık mod) */
+  var G, I, CH, LBL, INK, CHR;
+  function palette() {
+    var dark = document.documentElement.getAttribute("data-theme") === "dark";
+    G = dark ? "#E6E8EB" : "#1C1F24"; I = dark ? "#8A919B" : "#8E959E";
+    CH = dark ? "#E8708C" : "#7B1530"; LBL = dark ? "#A8284D" : "#7B1530";
+    INK = dark ? "230,232,235" : "28,31,36"; CHR = dark ? "232,112,140" : "123,21,48";
+  }
+  function ink(a) { return "rgba(" + INK + "," + a + ")"; }
+  function chr(a) { return "rgba(" + CHR + "," + a + ")"; }
+  palette();
+  document.addEventListener("gim:theme", palette);
   var W = 0, H = 0;
 
   /* Ekrandaki yazılar (TR / EN) */
@@ -40,14 +51,14 @@
   }
 
   function grid() {
-    c.strokeStyle = "rgba(28,31,36,.07)"; c.lineWidth = 1; c.beginPath();
+    c.strokeStyle = ink(.07); c.lineWidth = 1; c.beginPath();
     for (var x = 0; x < W; x += 40) { c.moveTo(x + .5, 0); c.lineTo(x + .5, H); }
     for (var y = 0; y < H; y += 40) { c.moveTo(0, y + .5); c.lineTo(W, y + .5); }
     c.stroke();
-    c.strokeStyle = "rgba(28,31,36,.35)"; c.beginPath();
+    c.strokeStyle = ink(.35); c.beginPath();
     for (x = 0; x < W; x += 20) { var l = x % 100 ? 4 : 9; c.moveTo(x, 0); c.lineTo(x, l); c.moveTo(x, H); c.lineTo(x, H - l); }
     c.stroke();
-    c.strokeStyle = "rgba(28,31,36,.4)"; c.beginPath();   // merkez artı
+    c.strokeStyle = ink(.4); c.beginPath();   // merkez artı
     c.moveTo(W / 2 - 10, H / 2); c.lineTo(W / 2 - 4, H / 2); c.moveTo(W / 2 + 4, H / 2); c.lineTo(W / 2 + 10, H / 2);
     c.moveTo(W / 2, H / 2 - 10); c.lineTo(W / 2, H / 2 - 4); c.moveTo(W / 2, H / 2 + 4); c.lineTo(W / 2, H / 2 + 10);
     c.stroke();
@@ -66,7 +77,7 @@
     c.fillStyle = G; rrect(-6 * s, -5 * s, 12 * s, 10 * s, 2 * s); c.fill();
     [[-a, -a], [a, -a], [a, a], [-a, a]].forEach(function (d, i) {
       var dx = d[0], dy = d[1];
-      c.fillStyle = "rgba(28,31,36,.12)"; c.beginPath(); c.arc(dx, dy, 8 * s, 0, 7); c.fill();
+      c.fillStyle = ink(.12); c.beginPath(); c.arc(dx, dy, 8 * s, 0, 7); c.fill();
       c.lineWidth = 1.4 * s; c.beginPath(); c.arc(dx, dy, 8 * s, 0, 7); c.stroke();
       var r = t * 9 * (i % 2 ? 1 : -1) + i;
       c.lineWidth = 1.6 * s; c.beginPath();
@@ -115,9 +126,9 @@
     } else {                                            // otonom takip + öngörü noktaları
       tr.x += (p.x + vx * .1 - tr.x) * .2; tr.y += (p.y + vy * .1 - tr.y) * .2;
       box = 60 * s; col = CH; mode = T.track;
-      c.fillStyle = "rgba(123,21,48,.6)";
+      c.fillStyle = chr(.6);
       for (var j = 1; j <= 6; j++) { var f = target(t + j * .13); c.beginPath(); c.arc(f.x, f.y, 1.4 + j * .2, 0, 7); c.fill(); }
-      c.strokeStyle = "rgba(123,21,48,.35)"; c.lineWidth = 1; c.setLineDash([4, 5]);
+      c.strokeStyle = chr(.35); c.lineWidth = 1; c.setLineDash([4, 5]);
       c.beginPath(); c.moveTo(W / 2, H / 2); c.lineTo(tr.x, tr.y); c.stroke(); c.setLineDash([]);
     }
     brackets(tr.x, tr.y, box, box * .82, box * .22, col, 2);
@@ -126,7 +137,7 @@
     if (ph >= 2.9) {
       var lbl = T.target + " " + (.95 + .03 * Math.sin(t * 3.1)).toFixed(2);
       c.font = '500 11px "IBM Plex Mono", monospace'; var w = c.measureText(lbl).width + 10;
-      c.fillStyle = CH; c.fillRect(lx, ly - 13, w, 16); text(lbl, lx + 5, ly - 1, "#fff");
+      c.fillStyle = LBL; c.fillRect(lx, ly - 13, w, 16); text(lbl, lx + 5, ly - 1, "#fff");
     } else text(ph < 2.2 ? T.scan : T.locking, lx, ly, col);
 
     // köşe telemetrisi
@@ -144,6 +155,7 @@
     tr.x = W / 2; tr.y = H / 2;
     for (var i = 0; i < 60; i++) render(6 + i * .001);
     document.addEventListener("gim:lang", function () { render(6.06); });
+        document.addEventListener("gim:theme", function () { render(6.06); });
     return;
   }
 

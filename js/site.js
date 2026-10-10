@@ -76,7 +76,9 @@
     instagram: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>',
     youtube: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9v6l5-3z" fill="currentColor" stroke="none"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>',
-    x: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"/></svg>'
+    x: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"/></svg>',
+    moon: '<svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>',
+    sun: '<svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>'
   };
 
   function lang() { return document.documentElement.getAttribute("data-lang") || "tr"; }
@@ -114,15 +116,15 @@
         '<a class="brand" href="index.html" aria-label="GROUP GİM ' + (L === "en" ? "home" : "ana sayfa") + '">' +
           '<img src="assets/logo-mark.webp" alt="" width="53" height="50"><span>GROUP GİM</span></a>' +
         '<nav class="nav" aria-label="' + (L === "en" ? "Main menu" : "Ana menü") + '"><ul>' + items + "</ul></nav>" +
-        '<div class="header-actions">' +
-          langToggle() +
+                '<div class="header-actions">' +
+          themeToggle() + langToggle() +
           '<a class="btn btn--primary btn--sm" href="sponsorluk.html#sponsor-formu">' + cta + "</a>" +
           '<button class="menu-btn" type="button" aria-label="' + (L === "en" ? "Open menu" : "Menüyü aç") + '" aria-expanded="false">' + ICON.menu + "</button>" +
         "</div>" +
       "</div>" +
       '<div class="mobile-menu" id="mobile-menu">' +
         '<div class="mm-top"><a class="brand" href="index.html"><img src="assets/logo-mark.webp" alt="" width="53" height="50"><span>GROUP GİM</span></a>' +
-        '<button class="menu-btn" type="button" data-close aria-label="' + (L === "en" ? "Close menu" : "Menüyü kapat") + '">' + ICON.close + "</button></div>" +
+           themeToggle() + '<button class="menu-btn" type="button" data-close aria-label="' + (L === "en" ? "Close menu" : "Menüyü kapat") + '">' + ICON.close + "</button></div>" +
         langToggle() + mobile +
         '<a class="btn btn--primary" href="sponsorluk.html#sponsor-formu">' + cta + "</a>" +
       "</div>";
@@ -140,6 +142,7 @@
     mm.querySelector("[data-close]").addEventListener("click", closeMenu);
     mm.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeMenu); });
     bindLangButtons(host);
+    bindThemeButtons(host);
   }
   /* ---------- Sağ alt köşedeki TEKNOFEST geri sayımı ----------
      Yuvarlak butona tıklanınca küçük bir pencere açılır (sohbet balonu gibi). */
@@ -203,7 +206,41 @@
       '<button type="button" data-lang-set="tr" aria-pressed="' + (L === "tr") + '">TR</button>' +
       '<button type="button" data-lang-set="en" aria-pressed="' + (L === "en") + '">EN</button></div>';
   }
-
+   /* ---------- Karanlık mod ----------
+     Seçim localStorage'da "gim-theme" olarak saklanır ("light" / "dark").
+     Seçim yoksa cihazın tercihi (prefers-color-scheme) kullanılır.
+     Sayfa ilk çizilirken titreme olmaması için her sayfanın <head>'inde küçük bir betik var. */
+  function theme() { return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light"; }
+  function themeToggle() {
+    var en = lang() === "en", dark = theme() === "dark";
+    var label = dark ? (en ? "Switch to light mode" : "Açık moda geç") : (en ? "Switch to dark mode" : "Karanlık moda geç");
+    return '<button class="theme-toggle" type="button" data-theme-toggle aria-pressed="' + dark + '" aria-label="' + label + '" title="' + label + '">' +
+      ICON.moon + ICON.sun + "</button>";
+  }
+  function setTheme(T, animate) {
+    var root = document.documentElement;
+    if (animate) { root.classList.add("theme-anim"); setTimeout(function () { root.classList.remove("theme-anim"); }, 500); }
+    root.setAttribute("data-theme", T);
+    store("gim-theme", T);
+    var en = lang() === "en", dark = T === "dark";
+    var label = dark ? (en ? "Switch to light mode" : "Açık moda geç") : (en ? "Switch to dark mode" : "Karanlık moda geç");
+    document.querySelectorAll("[data-theme-toggle]").forEach(function (b) {
+      b.setAttribute("aria-pressed", dark); b.setAttribute("aria-label", label); b.setAttribute("title", label);
+    });
+    document.dispatchEvent(new CustomEvent("gim:theme", { detail: T }));
+  }
+  function bindThemeButtons(root) {
+    root.querySelectorAll("[data-theme-toggle]").forEach(function (b) {
+      b.addEventListener("click", function () { setTheme(theme() === "dark" ? "light" : "dark", true); });
+    });
+  }
+  // <head> betiği yoksa yedek olarak burada uygula
+  if (!document.documentElement.hasAttribute("data-theme")) {
+    var savedTheme = store("gim-theme");
+    if (savedTheme !== "dark" && savedTheme !== "light")
+      savedTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  }
   function bindLangButtons(root) {
     root.querySelectorAll("[data-lang-set]").forEach(function (b) {
       b.addEventListener("click", function () { setLang(b.getAttribute("data-lang-set")); });
@@ -292,7 +329,7 @@
     setGoogCookie(L === "en" ? "/tr/en" : null);
     location.reload();
   }
-  window.GIM = { lang: lang, setLang: setLang, reduceMotion: reduceMotion, store: store };
+    window.GIM = { lang: lang, setLang: setLang, theme: theme, setTheme: setTheme, reduceMotion: reduceMotion, store: store };
 
   /* ---------- Arka plan: logonun solgun silüeti (kanatları çırpar) ----------
      Logodan üretilmiş 3 katman: gövde + sol kanat + sağ kanat.

@@ -45,6 +45,15 @@
 
     var key = new THREE.DirectionalLight(0xffffff, 1.4); key.position.set(3, 6, 4); scene.add(key);
     scene.add(new THREE.HemisphereLight(0xffffff, 0x8e959e, 0.6));
+        // karanlık modda modelin kenarlarını ayıran arka ışık (açık modda kapalı)
+    var rim = new THREE.DirectionalLight(0xffdde4, 0); rim.position.set(-4, 3, -5); scene.add(rim);
+    function applyTheme() {
+      var dark = document.documentElement.getAttribute("data-theme") === "dark";
+      rim.intensity = dark ? 1.8 : 0;
+      renderer.toneMappingExposure = dark ? 1.3 : 1.05;
+    }
+    applyTheme();
+    document.addEventListener("gim:theme", applyTheme);
 
     /* ---------- Malzemeler ---------- */
     var M = {
