@@ -9,7 +9,7 @@
   var CONFIG = {
         /* TEKNOFEST final tarihi (tahmini) — takvim açıklanınca güncelleyin */
     finalDate: "2027-08-27T10:00:00+03:00",
-    email: "iletisim@groupgim.com",
+        email: "groupgim033135@gmail.com",
     socials: {
       instagram: "#",   // hesaplar açılınca buraya bağlantıları yazın
       youtube: "#",
