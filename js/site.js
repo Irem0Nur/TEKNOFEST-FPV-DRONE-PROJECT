@@ -244,30 +244,53 @@
       '<span class="mono">TEKNOFEST · FPV DRONE ' + (en ? "TRACKING" : "İZLEME") + "</span></div></div>";
   }
 
-  /* ---------- Dil geçişi ----------
-     Türkçe metin HTML'de yazılı, İngilizcesi data-en özniteliğinde.
-     Öznitelikler için: data-en-placeholder, data-en-aria-label, data-en-alt */
+  /* ---------- Dil geçişi (otomatik çeviri) ----------
+     Türkçe metin HTML'de yazılı. EN seçilince sayfa Google Translate ile
+     Türkçeden İngilizceye otomatik çevrilir; data-en öznitelikleri artık
+     metin için kullanılmaz. Çevrilmemesi gereken yerlere translate="no" ekleyin.
+     Menü, alt bilgi, form uyarıları gibi JS ile yazılan metinler kendi
+     İngilizceleriyle gelir. */
+  function setGoogCookie(val) {
+    var host = location.hostname;
+    var exp = val ? "" : "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    var v = "googtrans=" + (val || "") + exp + "; path=/";
+    document.cookie = v;
+    if (host.indexOf(".") > -1) {
+      document.cookie = v + "; domain=" + host;
+      document.cookie = v + "; domain=." + host;
+    }
+  }
+  function loadGoogleTranslate() {
+    if (document.getElementById("gim-gt-script")) return;
+    var box = document.createElement("div");
+    box.id = "google_translate_element";
+    box.style.display = "none";
+    document.body.appendChild(box);
+    window.gimGoogleTranslateInit = function () {
+      new google.translate.TranslateElement({ pageLanguage: "tr", includedLanguages: "en", autoDisplay: false }, "google_translate_element");
+    };
+    var sc = document.createElement("script");
+    sc.id = "gim-gt-script";
+    sc.src = "https://translate.google.com/translate_a/element.js?cb=gimGoogleTranslateInit";
+    sc.async = true;
+    document.body.appendChild(sc);
+  }
   function applyLang(L) {
     document.documentElement.setAttribute("data-lang", L);
-    document.documentElement.setAttribute("lang", L);
-    document.querySelectorAll("[data-en]").forEach(function (el) {
-      if (!el.hasAttribute("data-tr")) el.setAttribute("data-tr", el.innerHTML);
-      el.innerHTML = L === "en" ? el.getAttribute("data-en") : el.getAttribute("data-tr");
-    });
-    ["placeholder", "aria-label", "alt", "content"].forEach(function (attr) {
-      document.querySelectorAll("[data-en-" + attr + "]").forEach(function (el) {
-        var key = "data-tr-" + attr;
-        if (!el.hasAttribute(key)) el.setAttribute(key, el.getAttribute(attr) || "");
-        el.setAttribute(attr, L === "en" ? el.getAttribute("data-en-" + attr) : el.getAttribute(key));
-      });
-    });
+    /* lang="tr" kalmalı: Google kaynak dili buradan anlıyor */
+    document.documentElement.setAttribute("lang", "tr");
+    if (L === "en") {
+      setGoogCookie("/tr/en");
+      loadGoogleTranslate();
+    } else {
+      setGoogCookie(null);
+    }
   }
   function setLang(L) {
+    if (L === lang()) return;
     store("gim-lang", L);
-    applyLang(L);
-    renderHeader();
-    renderFooter();
-    document.dispatchEvent(new CustomEvent("gim:lang", { detail: L }));
+    setGoogCookie(L === "en" ? "/tr/en" : null);
+    location.reload();
   }
   window.GIM = { lang: lang, setLang: setLang, reduceMotion: reduceMotion, store: store };
 

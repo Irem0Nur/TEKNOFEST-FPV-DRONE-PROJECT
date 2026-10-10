@@ -514,3 +514,8 @@ p { margin: 0 0 1em; }
   [data-reveal] { opacity: 1; transform: none; }
   .reticles { display: none; }
 }
+/* ---------- Google Translate: kendi çubuğunu ve vurgularını gizle ---------- */
+iframe.skiptranslate, .goog-te-banner-frame, .goog-te-balloon-frame, #goog-gt-tt,
+.VIpgJd-ZVi9od-ORHb-OEVmcd, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf, #google_translate_element { display: none !important; }
+body { top: 0 !important; }
+.goog-text-highlight, font { background: none !important; box-shadow: none !important; }
