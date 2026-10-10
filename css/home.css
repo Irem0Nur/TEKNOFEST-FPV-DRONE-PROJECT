@@ -5,48 +5,30 @@
 /* ---------- Giriş: küllerinden doğan anka (tam ekran) ---------- */
 .intro {
   position: fixed; inset: 0; z-index: 100;
-  background-color: var(--steel);
-  background-image: var(--brushed), linear-gradient(135deg, var(--steel-light) 0%, var(--steel) 45%, var(--steel-dark) 100%);
-  background-blend-mode: soft-light, normal;
-  display: flex; align-items: center; justify-content: center;
   transition: opacity .9s var(--ease), visibility .9s;
 }
+/* çelik zemin ayrı katmanda: sayfa açılırken sadece zemin söner, kuş uçmaya devam eder */
+.intro::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 42%, rgba(120,72,70,.35) 0%, rgba(40,28,32,0) 70%),
+    radial-gradient(ellipse at 50% 45%, #241A1E 0%, #120E12 55%, #070608 100%);
+  transition: opacity .9s var(--ease);
+}
+.intro.open { pointer-events: none; }
+.intro.open::before { opacity: 0; }
 .intro.out { opacity: 0; visibility: hidden; }
 .intro-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
-.intro-logo { position: relative; z-index: 1; height: min(68vh, 620px); aspect-ratio: 800 / 1020; max-width: 80vw; }
-.intro-img {
-  width: 100%; height: 100%;
-  filter: drop-shadow(0 18px 30px rgba(28,31,36,.35)) drop-shadow(0 2px 2px rgba(0,0,0,.25));
-  clip-path: inset(100% 0 0 0); transform: scale(.94);
-  transition: clip-path 1s var(--ease), transform 1.4s var(--ease);
-}
-.intro.reveal .intro-img { clip-path: inset(0 0 0 0); transform: none; }
-/* metalik ışık süpürmesi: logonun parlatılmış kopyası, hareketli bir bant maskesiyle görünür */
-.sweep {
-  position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
-  filter: brightness(1.9) contrast(1.05);
-  -webkit-mask-image: linear-gradient(110deg, transparent 42%, #000 50%, transparent 58%);
-          mask-image: linear-gradient(110deg, transparent 42%, #000 50%, transparent 58%);
-  -webkit-mask-size: 300% 100%; mask-size: 300% 100%;
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-  -webkit-mask-position: 100% 0; mask-position: 100% 0;
-  opacity: 0;
-}
-.intro.shine .sweep { animation: sweep 1.3s var(--ease) forwards; }
-@keyframes sweep {
-  0%   { opacity: .9; -webkit-mask-position: 100% 0; mask-position: 100% 0; }
-  90%  { opacity: .9; }
-  100% { opacity: 0; -webkit-mask-position: 0% 0; mask-position: 0% 0; }
-}
 .skip-intro {
   position: absolute; right: 24px; bottom: 24px; z-index: 3;
   min-height: 40px; padding: 8px 16px; border-radius: 6px; cursor: pointer;
   font-family: var(--font-mono); font-size: .8rem; letter-spacing: .12em;
-  background: rgba(255,255,255,.55); border: 1px solid var(--border); color: var(--graphite);
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.22); color: #EADBD5;
+  transition: opacity .4s var(--ease), border-color .2s, color .2s;
 }
-.skip-intro:hover { border-color: var(--cherry); color: var(--cherry); }
-html:not(.intro-running) .intro:not(.out) { display: none; }
-
+.skip-intro:hover { border-color: #E4A898; color: #F8E2D9; }
+.intro.open .skip-intro { opacity: 0; }
+html:not(.intro-running) .intro:not(.out):not(.open) { display: none; }
 /* Giriş sürerken menü ve hero metinleri bekler */
 .site-header { transition: opacity .8s var(--ease); }
 .intro-running .site-header { opacity: 0; pointer-events: none; }
