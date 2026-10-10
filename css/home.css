@@ -211,6 +211,24 @@ html:not(.intro-running) .intro:not(.out) { display: none; }
   font-family: var(--font-mono); font-size: .8rem; color: var(--text-muted);
   background: rgba(255,255,255,.25);
 }
+.slot--logo {
+  gap: 14px;
+  border-style: solid;
+  background: rgba(255,255,255,.6);
+}
+.slot--logo img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+.slot--logo b {
+  font-family: var(--font-mono);
+  font-size: .95rem;
+  letter-spacing: .08em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
 .pkg { padding: 32px 28px; }
 .pkg h3 { font-size: 1.6rem; margin: 10px 0 18px; }
 .pkg ul { list-style: none; margin: 0; padding: 0; }
