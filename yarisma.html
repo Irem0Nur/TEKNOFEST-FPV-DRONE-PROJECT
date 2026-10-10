@@ -4,75 +4,304 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-en="Competition — GROUP GİM">Yarışma — GROUP GİM</title>
-  <meta name="description" content="Yarışmanın amacı, görev akışı, kuralları, puanlaması ve bizim yol haritamız." data-en-content="The competition's goal, mission flow, rules, scoring and our roadmap.">
+  <meta name="description" content="TEKNOFEST FPV Drone İzleme yarışmasının amacı, görev akışı, kuralları, puanlaması ve GROUP GİM'in yol haritası."
+        data-en-content="The goal, mission flow, rules and scoring of the TEKNOFEST FPV Drone Tracking competition, and GROUP GİM's roadmap.">
   <link rel="icon" type="image/png" href="assets/favicon-64.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Saira:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
   <script src="js/site.js" defer></script>
 </head>
 <body data-page="competition">
 <header id="site-header"></header>
 
 <main>
+
+  <!-- ============ SAYFA BAŞLIĞI ============ -->
   <section class="page-hero">
     <svg class="big-reticle" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width=".6" aria-hidden="true"><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="42" stroke-dasharray="1 3"/><path d="M50 2v18M50 80v18M2 50h18M80 50h18"/><path d="M8 22V8h14M78 8h14v14M92 78v14H78M22 92H8V78"/></svg>
     <div class="container">
       <nav class="breadcrumb" aria-label="Konum" data-en-aria-label="Breadcrumb"><a href="index.html" data-en="Home">Ana Sayfa</a> / <span data-en="Competition">Yarışma</span></nav>
-      <span class="eyebrow" data-en="TEKNOFEST">TEKNOFEST</span>
-      <h1 data-en="The FPV Drone Tracking competition">FPV Drone İzleme yarışması</h1>
-      <p class="lead" data-en="The competition's goal, mission flow, rules, scoring and our roadmap.">Yarışmanın amacı, görev akışı, kuralları, puanlaması ve bizim yol haritamız.</p>
-      <div class="subnav"><a href="#yarisma" data-en="The Competition">Yarışma</a><a href="#gorev-akisi" data-en="Mission Flow">Görev Akışı</a><a href="#kurallar" data-en="Rules">Kurallar</a><a href="#puanlama" data-en="Scoring">Puanlama</a><a href="#yol-haritasi" data-en="Roadmap">Yol Haritası</a></div>
+      <span class="eyebrow">TEKNOFEST</span>
+      <h1 data-en="FPV Drone Tracking competition">FPV Drone İzleme yarışması</h1>
+      <p class="lead" data-en="Lock on to a target drone flying unknown manoeuvres and follow it fully autonomously — without GPS.">Önceden bilinmeyen manevralar yapan bir hedef drone'a kilitlen ve onu GPS olmadan, tamamen otonom olarak takip et.</p>
+      <div class="subnav">
+        <a href="#yarisma" data-en="The Competition">Yarışma</a>
+        <a href="#gorev-akisi" data-en="Mission Flow">Görev Akışı</a>
+        <a href="#kurallar" data-en="Rules">Kurallar</a>
+        <a href="#puanlama" data-en="Scoring">Puanlama</a>
+        <a href="#yol-haritasi" data-en="Roadmap">Yol Haritası</a>
+      </div>
     </div>
   </section>
 
+  <!-- ============ 01 YARIŞMA ============ -->
   <section class="section" id="yarisma">
     <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow mono">01</span>
-        <h2 data-en="The Competition">Yarışma</h2>
+      <div class="grid grid-2 comp-intro">
+        <div data-reveal>
+          <span class="eyebrow mono">01</span>
+          <h2 data-en="The Competition">Yarışma</h2>
+          <p class="lead" data-en="The competition tests how well autonomous systems can perceive, decide and follow a moving target in a realistic mission scenario.">Yarışma, otonom sistemlerin algılama, karar verme ve hareketli hedef takibi becerilerini gerçekçi bir görev senaryosunda sınıyor.</p>
+          <p data-en="Its starting point is a real problem: on the battlefield, soft-kill methods such as radar jamming, GPS spoofing and jammers are not always enough against drones. TEKNOFEST asks university students to develop innovative, vision-based tracking solutions for exactly these situations.">Çıkış noktası gerçek bir sorun: harp sahasında radar karıştırma, GPS bozma ve jammer gibi "softkill" yöntemler dronelara karşı her zaman yeterli olmuyor. TEKNOFEST, tam da bu durumlar için üniversite öğrencilerinden görüntü temelli takip konseptinde yenilikçi çözümler geliştirmelerini istiyor.</p>
+          <p class="src mono" data-en="Source: TEKNOFEST 2026 FPV Drone Tracking Technical Specification, Section 1">Kaynak: TEKNOFEST 2026 FPV Drone İzleme Teknik Şartnamesi, Bölüm 1</p>
+        </div>
+        <div class="grid grid-2 facts" data-reveal data-reveal-delay="2">
+          <div class="panel fact"><b class="mono">11</b><span data-en="unknown manoeuvres to track">takip edilecek bilinmeyen manevra</span></div>
+          <div class="panel fact"><b class="mono" data-en="10 min">10 dk</b><span data-en="maximum mission time">azami görev süresi</span></div>
+          <div class="panel fact"><b class="mono">0 GNSS</b><span data-en="no satellite navigation on board">drone üzerinde uydu navigasyonu yok</span></div>
+          <div class="panel fact"><b class="mono" data-en="4 days">4 gün</b><span data-en="one attempt per day, four in total">günde bir, toplam dört deneme</span></div>
+          <div class="panel fact"><b class="mono">≤ 15"</b><span data-en="maximum drone size">azami drone boyutu</span></div>
+          <div class="panel fact"><b class="mono">₺300.000</b><span data-en="first prize">birincilik ödülü</span></div>
+        </div>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
     </div>
   </section>
+
+  <!-- ============ 02 GÖREV AKIŞI ============ -->
   <section class="section section--alt" id="gorev-akisi">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">02</span>
         <h2 data-en="Mission Flow">Görev Akışı</h2>
+        <p class="lead" data-en="What happens on the field, step by step, from the moment the team is called.">Takım anons edildiği andan itibaren sahada neler oluyor, adım adım.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+      <ol class="mission" data-reveal>
+        <li class="m-step">
+          <span class="m-time mono" data-en="≤ 5 MIN">≤ 5 DK</span>
+          <h3 data-en="Announcement">Anons</h3>
+          <p data-en="The team must arrive at the competition area within 5 minutes of being called.">Takım anons edildikten sonra 5 dakika içinde yarışma alanına gelir.</p>
+        </li>
+        <li class="m-step">
+          <span class="m-time mono" data-en="15 MIN">15 DK</span>
+          <h3 data-en="Preparation">Hazırlık</h3>
+          <p data-en="The team has 15 minutes to prepare the drone and the ground station.">Drone'u ve yer istasyonunu hazırlamak için 15 dakika süre vardır.</p>
+        </li>
+        <li class="m-step">
+          <span class="m-time mono" data-en="MANUAL">MANUEL</span>
+          <h3 data-en="Takeoff">Kalkış</h3>
+          <p data-en="The pilot takes off manually and flies into the designated mission area where the target drone is.">Pilot manuel olarak kalkış yapar ve hedef drone'un bulunduğu görev alanına girer.</p>
+        </li>
+        <li class="m-step is-key">
+          <span class="m-time mono">LOCK</span>
+          <h3 data-en="Lock on">Kilitlenme</h3>
+          <p data-en="The drone locks on to the target, which hovers in a fixed position, and switches to autonomous mode.">Drone, başlangıçta sabit konumda uçan hedefe kilitlenir ve otonom moda geçer.</p>
+        </li>
+        <li class="m-step is-key">
+          <span class="m-time mono" data-en="≤ 10 MIN">≤ 10 DK</span>
+          <h3 data-en="Autonomous tracking">Otonom takip</h3>
+          <p data-en="The target starts moving and flies 11 predefined manoeuvres. The clock starts when the target takes off.">Hedef hareket etmeye başlar ve 11 manevra yapar. Süre, hedef drone'un kalkışıyla başlar.</p>
+        </li>
+        <li class="m-step">
+          <span class="m-time mono" data-en="MANUAL">MANUEL</span>
+          <h3 data-en="Return">Dönüş</h3>
+          <p data-en="After the end-of-mission warning, the pilot brings the drone back to the start point manually.">Görev bitti uyarısından sonra pilot drone'u manuel olarak başlangıç noktasına getirir.</p>
+        </li>
+        <li class="m-step">
+          <span class="m-time mono" data-en="≤ 10 MIN">≤ 10 DK</span>
+          <h3 data-en="Recording">Kayıt teslimi</h3>
+          <p data-en="The recorded camera footage is shared with the referees within 10 minutes after the run.">Kaydedilen kamera görüntüsü, yarışmadan sonra 10 dakika içinde hakem heyetiyle paylaşılır.</p>
+        </li>
+      </ol>
+      <div class="callout" data-reveal>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.01"/></svg>
+        <p data-en="Throughout the run, the image the drone sees must be streamed live to a screen the referees can watch. A team that runs out of time scores for the stages it has completed; if a team asks to restart, the points earned on the field are reset.">Yarışma boyunca drone'un gördüğü görüntü, hakemlerin izleyebileceği bir ekrana canlı aktarılmalıdır. Süresi dolan takım, tamamladığı aşamalar kadar puan alır; başa dönme talep eden takımın sahada kazandığı puanlar sıfırlanır.</p>
+      </div>
     </div>
   </section>
+
+  <!-- ============ 03 KURALLAR ============ -->
   <section class="section" id="kurallar">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">03</span>
         <h2 data-en="Rules">Kurallar</h2>
+        <p class="lead" data-en="The main technical and organisational rules in the specification.">Şartnamedeki başlıca teknik ve organizasyonel kurallar.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+      <div class="grid grid-3 rules">
+        <article class="panel rule-card" data-reveal data-reveal-delay="1">
+          <h3 data-en="The drone">Drone</h3>
+          <ul class="rule-list">
+            <li data-en="Size must not exceed 15 inches">Boyutu 15 inçi aşmamalı</li>
+            <li data-en="Maximum İHA-1 class">En fazla İHA-1 sınıfında olmalı</li>
+            <li data-en="Battery-powered electric motors only">İtki yalnızca bataryalı elektrik motorlarıyla</li>
+            <li data-en="Commercially packaged, safely mounted batteries">Ticari olarak paketlenmiş, güvenli yerleştirilmiş batarya</li>
+            <li data-en="No GNSS system on board">Üzerinde GNSS sistemi bulunmamalı</li>
+            <li data-en="VTOL-type UAVs are not accepted">VTOL tipi İHA'lar kabul edilmez</li>
+            <li data-en="Off-the-shelf parts are allowed">Rafta hazır ürünler kullanılabilir</li>
+          </ul>
+        </article>
+        <article class="panel rule-card" data-reveal data-reveal-delay="2">
+          <h3 data-en="Safety and video">Güvenlik ve görüntü</h3>
+          <ul class="rule-list">
+            <li data-en="Fail-safe systems against loss of communication">Haberleşme kesintisine karşı güvenlik sistemi</li>
+            <li data-en="Live camera feed to a screen at the control point">Kamera görüntüsünün kontrol noktasına canlı aktarımı</li>
+            <li data-en="The footage must be recorded">Görüntünün kayıt altına alınması</li>
+            <li data-en="Technical and safety inspection before flight">Uçuş öncesi teknik ve güvenlik kontrolü</li>
+            <li data-en="The drone must match the Critical Design Report">Drone, Kritik Tasarım Raporu'ndakiyle aynı kalmalı</li>
+            <li data-en="Must not leave the designated flight area">Belirlenen uçuş alanının dışına çıkılmamalı</li>
+          </ul>
+        </article>
+        <article class="panel rule-card" data-reveal data-reveal-delay="3">
+          <h3 data-en="Team and registration">Takım ve kayıt</h3>
+          <ul class="rule-list">
+            <li data-en="4 to 10 people, including the advisor">Danışman dahil 4–10 kişi</li>
+            <li data-en="A team captain and one pilot are required">Bir takım kaptanı ve bir pilot zorunlu</li>
+            <li data-en="On the course: the pilot plus up to 3 people">Parkurda pilot hariç en fazla 3 kişi</li>
+            <li data-en="Pilot registered on the SHGM UAV system">Pilotun SHGM İHA sistemine kaydı</li>
+            <li data-en="Drone registered, with its barcode on the airframe">Drone'un kaydı ve barkodunun üzerinde olması</li>
+            <li data-en="Written objections only">İtirazlar yalnızca yazılı yapılır</li>
+          </ul>
+        </article>
+      </div>
+      <p class="src mono" data-reveal data-en="Source: Technical Specification, Sections 2, 4, 5 and 8">Kaynak: Teknik Şartname, Bölüm 2, 4, 5 ve 8</p>
     </div>
   </section>
+
+  <!-- ============ 04 PUANLAMA ============ -->
   <section class="section section--alt" id="puanlama">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">04</span>
         <h2 data-en="Scoring">Puanlama</h2>
+        <p class="lead" data-en="Out of 100 points, a quarter comes from reports and video, three quarters from the field.">100 puanın dörtte biri raporlar ve videodan, dörtte üçü sahadan geliyor.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+      <div class="split-bar" data-reveal role="img" aria-label="Puan dağılımı: yüzde 25 rapor ve video, yüzde 75 görev" data-en-aria-label="Score split: 25 percent reports and video, 75 percent mission">
+        <div class="seg seg--a" style="flex: 25"><b class="mono">%25</b><span data-en="Reports &amp; video">Rapor &amp; video</span></div>
+        <div class="seg seg--b" style="flex: 75"><b class="mono">%75</b><span data-en="Mission on the field">Sahadaki görev</span></div>
+      </div>
+
+      <div class="grid grid-2 score-tables">
+        <div class="panel" data-reveal data-reveal-delay="1">
+          <h3 data-en="Reports and video · 25 points">Rapor ve video · 25 puan</h3>
+          <table class="score">
+            <tbody>
+              <tr><td data-en="Preliminary Design Report">Ön Tasarım Raporu</td><td class="mono">5</td></tr>
+              <tr><td data-en="Critical Design Report">Kritik Tasarım Raporu</td><td class="mono">10</td></tr>
+              <tr><td data-en="Method &amp; Flight Proof Video">Metot Tanıtım ve Uçuş Kanıt Videosu</td><td class="mono">10</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel" data-reveal data-reveal-delay="2">
+          <h3 data-en="Mission · 75 points">Görev · 75 puan</h3>
+          <table class="score">
+            <tbody>
+              <tr><td data-en="Live video transmission">Anlık görüntü aktarımı (canlı yayın)</td><td class="mono">10</td></tr>
+              <tr><td data-en="Autonomous flight capability">Otonom uçuş kabiliyeti</td><td class="mono">10</td></tr>
+              <tr><td data-en="Manoeuvre station 1">1. manevra istasyonu</td><td class="mono">10</td></tr>
+              <tr><td data-en="Manoeuvre station 2">2. manevra istasyonu</td><td class="mono">10</td></tr>
+              <tr><td data-en="Manoeuvre station 3">3. manevra istasyonu</td><td class="mono">15</td></tr>
+              <tr><td data-en="Manoeuvre station 4">4. manevra istasyonu</td><td class="mono">20</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid grid-2 prize-row">
+        <div class="panel prizes" data-reveal data-reveal-delay="1">
+          <h3 data-en="Prizes">Ödüller</h3>
+          <ol class="podium">
+            <li class="p1"><span class="mono" data-en="1st">1.</span><b class="mono">₺300.000</b><small data-en="Advisor ₺20.000">Danışman ₺20.000</small></li>
+            <li class="p2"><span class="mono" data-en="2nd">2.</span><b class="mono">₺250.000</b><small data-en="Advisor ₺15.000">Danışman ₺15.000</small></li>
+            <li class="p3"><span class="mono" data-en="3rd">3.</span><b class="mono">₺200.000</b><small data-en="Advisor ₺12.000">Danışman ₺12.000</small></li>
+          </ol>
+        </div>
+        <div class="panel min-crit" data-reveal data-reveal-delay="2">
+          <span class="why-tag mono" data-en="MINIMUM CRITERION">MİNİMUM KRİTER</span>
+          <h3 data-en="The first 4 manoeuvres, autonomously">İlk 4 manevra, otonom olarak</h3>
+          <p data-en="Only teams that complete the first four manoeuvres autonomously can enter the prize ranking. That is our first threshold.">Ödül sıralamasına yalnızca ilk dört manevrayı otonom olarak başarıyla tamamlayan takımlar girebiliyor. Bizim ilk eşiğimiz bu.</p>
+        </div>
+      </div>
+      <p class="src mono" data-reveal data-en="Source: Technical Specification, Sections 6.2, 6.3 and 7 (TEKNOFEST 2026 values)">Kaynak: Teknik Şartname, Bölüm 6.2, 6.3 ve 7 (TEKNOFEST 2026 değerleri)</p>
     </div>
   </section>
+
+  <!-- ============ 05 YOL HARİTASI ============ -->
   <section class="section" id="yol-haritasi">
     <div class="container">
       <div class="section-head" data-reveal>
         <span class="eyebrow mono">05</span>
         <h2 data-en="Roadmap">Yol Haritası</h2>
+        <p class="lead" data-en="The competition is evaluated in three stages before the final. Below is our plan, built on the 2026 calendar.">Yarışma finalden önce üç aşamada değerlendiriliyor. Aşağıda 2026 takvimini esas alan planımız var.</p>
       </div>
-      <div class="todo" data-reveal data-en="This section will be filled in the next step.">Bu bölümün içeriği bir sonraki adımda eklenecek.</div>
+
+      <div class="grid grid-2 roadmap">
+        <div data-reveal>
+          <h3 class="col-title" data-en="Official stages (2026 calendar)">Resmî aşamalar (2026 takvimi)</h3>
+          <table class="cal">
+            <tbody>
+              <tr><td class="mono" data-en="7 April">7 Nisan</td><td data-en="Application deadline">Son başvuru tarihi</td></tr>
+              <tr><td class="mono" data-en="8 April">8 Nisan</td><td data-en="Preliminary Design Report">Ön Tasarım Raporu teslimi</td></tr>
+              <tr><td class="mono" data-en="22 April">22 Nisan</td><td data-en="Preliminary results">Ön Tasarım sonuçları</td></tr>
+              <tr><td class="mono" data-en="2 June">2 Haziran</td><td data-en="Critical Design Report">Kritik Tasarım Raporu teslimi</td></tr>
+              <tr><td class="mono" data-en="12 June">12 Haziran</td><td data-en="Critical design results">Kritik Tasarım sonuçları</td></tr>
+              <tr><td class="mono" data-en="31 July">31 Temmuz</td><td data-en="Method &amp; Flight Proof Video">Metot Tanıtım ve Uçuş Kanıt Videosu</td></tr>
+              <tr><td class="mono" data-en="11 August">11 Ağustos</td><td data-en="Finalists announced">Finalistlerin açıklanması</td></tr>
+              <tr><td class="mono" data-en="30 Sep – 4 Oct">30 Eyl – 4 Eki</td><td data-en="TEKNOFEST (2026: Şanlıurfa)">TEKNOFEST (2026: Şanlıurfa)</td></tr>
+            </tbody>
+          </table>
+          <p class="src mono" data-en="The 2027 calendar has not been announced yet; dates will be updated.">2027 takvimi henüz açıklanmadı; tarihler açıklanınca güncellenecek.</p>
+        </div>
+
+        <div data-reveal data-reveal-delay="2">
+          <h3 class="col-title" data-en="Our plan">Bizim planımız</h3>
+          <ol class="timeline">
+            <li class="tl-item now">
+              <span class="tl-date mono" data-en="OCT – NOV 2026 · NOW">EKİM – KASIM 2026 · ŞU AN</span>
+              <h3 data-en="Demo and first flight">Demo ve ilk uçuş</h3>
+              <p data-en="Electronics and flight tests on a temporary frame.">Geçici gövdeyle elektronik ve uçuş testleri.</p>
+            </li>
+            <li class="tl-item">
+              <span class="tl-date mono" data-en="DEC – JAN">ARALIK – OCAK</span>
+              <h3 data-en="Prototype">Prototip</h3>
+              <p data-en="3D printing and assembly of the ducted frame.">Kanallı gövdenin 3D baskısı ve montajı.</p>
+            </li>
+            <li class="tl-item">
+              <span class="tl-date mono" data-en="FEB – MAR">ŞUBAT – MART</span>
+              <h3 data-en="Autonomous tracking">Otonom takip</h3>
+              <p data-en="Image processing and tracking software tests.">Görüntü işleme ve takip yazılımı testleri.</p>
+            </li>
+            <li class="tl-item">
+              <span class="tl-date mono" data-en="APR – JUN">NİSAN – HAZİRAN</span>
+              <h3 data-en="Application and reports">Başvuru ve raporlar</h3>
+              <p data-en="Preliminary and Critical Design Reports.">Ön Tasarım ve Kritik Tasarım Raporları.</p>
+            </li>
+            <li class="tl-item">
+              <span class="tl-date mono" data-en="JULY">TEMMUZ</span>
+              <h3 data-en="Proof video">Kanıt videosu</h3>
+              <p data-en="Method presentation and flight proof.">Metot tanıtımı ve uçuş kanıtı.</p>
+            </li>
+            <li class="tl-item">
+              <span class="tl-date mono" data-en="AUG – SEP 2027">AĞUSTOS – EYLÜL 2027</span>
+              <h3 data-en="TEKNOFEST final">TEKNOFEST finali</h3>
+              <p data-en="Four days of competition and the prize ranking.">4 günlük yarışma ve ödül sıralaması.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- ============ ÇAĞRI ============ -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="panel cta-band" data-reveal>
+        <div>
+          <h2 data-en="Help us reach the final">Finale ulaşmamıza destek olun</h2>
+          <p class="muted" data-en="Every part on our drone brings us one step closer to the field.">Drone'umuzdaki her parça bizi sahaya bir adım daha yaklaştırıyor.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="sponsorluk.html#sponsor-formu" data-en="Become a Sponsor">Sponsor Olun</a>
+          <a class="btn btn--ghost" href="teknik.html" data-en="Technical details">Teknik detaylar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer id="site-footer"></footer>
