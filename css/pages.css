@@ -527,3 +527,22 @@ a.contact-card:hover b { color: var(--cherry); }
 .dist-fig { margin: 0; padding: clamp(18px, 3vw, 28px); }
 .dist-fig svg { width: 100%; height: auto; display: block; }
 .dist-fig figcaption { margin-top: 10px; font-size: .76rem; color: var(--text-muted); }
+
+/* =========================================================
+   FORMLAR: tablet ve mobil düzeni
+   ========================================================= */
+@media (max-width: 960px) {
+  .join { grid-template-columns: 1fr; }
+  .opt-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .opt-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .opt-box { min-height: 88px; }
+  .opt:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .gf-head { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
+  .gf-title { letter-spacing: .14em; }
+  .gf-progress { margin-left: auto; }
+  .gf-bar { width: 80px; }
+  .gf-body { padding: 20px 16px; }
+}
