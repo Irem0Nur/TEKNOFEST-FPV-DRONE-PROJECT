@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Saira:wght@500;600;700&display=swap">
     <script>
     // Karanlık / açık mod: sayfa çizilmeden önce uygula (titreme olmasın)
-    try { var t = localStorage.getItem("gim-theme"); if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+    try { var t = localStorage.getItem("gim-theme"); if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; document.documentElement.setAttribute("data-theme", t); } catch (e) {}    try { var t = localStorage.getItem("gim-theme") === "dark" ? "dark" : "light"; document.documentElement.setAttribute("data-theme", t); } catch (e) {}
   </script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/pages.css">
@@ -85,7 +85,7 @@
         <article class="panel panel--hover crew-card" data-reveal data-reveal-delay="3">
           <div class="avatar brk ratio-4x5" aria-hidden="true"><span>M</span></div>
           <div class="crew-body">
-            <div class="crew-tags"><span class="tag" data-en="Communications Lead">İletişim Sorumlusu</span></div>
+            <div class="crew-tags"><span class="tag tag--key" data-en="Communications Lead">İletişim Sorumlusu</span></div>
             <h3>Melike Nur Geçkin</h3>
             <p class="crew-role" data-en="Autonomous Control &amp; Software">Otonom Kontrol ve Yazılım</p>
             <p class="crew-dept mono" data-en="Computer Engineering">Bilgisayar Mühendisliği</p>

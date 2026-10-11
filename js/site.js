@@ -228,6 +228,7 @@
       b.setAttribute("aria-pressed", dark); b.setAttribute("aria-label", label); b.setAttribute("title", label);
     });
     document.dispatchEvent(new CustomEvent("gim:theme", { detail: T }));
+        if (dark) setTimeout(darkSurfaces, animate ? 520 : 0);   // geçiş animasyonu bitince tara
   }
   function bindThemeButtons(root) {
     root.querySelectorAll("[data-theme-toggle]").forEach(function (b) {
@@ -444,7 +445,80 @@
     }, { threshold: 0.5 });
     els.forEach(function (e) { e.textContent = e.getAttribute("data-from") || "0"; io.observe(e); });
   }
+   /* ---------- Karanlık mod: rengi sabit yazılmış açık kutular ----------
+     Karanlık moddayken sayfayı tarar; hâlâ açık renkli kalan zeminleri ve koyu
+     kalan yazıları bulup işaretler (stiller: css/style.css → "OTOMATİK KUTULAR").
+     - formun ana kutusu → .dk-surface, içindeki kartlar → .dk-inner
+     - sayfadaki diğer açık kartlar → .dk-card
+     Renkli kenarlıklara (ör. soldaki kiraz çizgi) dokunulmaz. */
+  function darkSurfaces() {
+    if (theme() !== "dark") return;
+    function lum(r, g, b) { return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255; }
+    function sat(p) { return Math.max(p[0], p[1], p[2]) - Math.min(p[0], p[1], p[2]); }
+    function rgbList(str) {
+      var out = [], re = /rgba?\(([^)]+)\)/g, m;
+      while ((m = re.exec(str))) {
+        var p = m[1].split(/[\s,\/]+/).filter(Boolean).map(parseFloat);
+        out.push({ l: lum(p[0], p[1], p[2]), a: p.length > 3 ? p[3] : 1, s: sat(p) });
+      }
+      return out;
+    }
+    function isLightBg(n, cs) {   // gri/beyaz tonlu, büyükçe, açık zemin mi? (saydamlık hesaba katılır)
+      if (n.offsetWidth * n.offsetHeight < 1500) return false;                // küçük noktalar, rozetler
+      var img = cs.backgroundImage !== "none" && (cs.backgroundImage.match(/gradient\(/g) || []).length <= 3
+                ? rgbList(cs.backgroundImage) : [];                           // köşe parantezi desenleri hariç
+      var cols = rgbList(cs.backgroundColor).concat(img).filter(function (c) { return c.a > .05; });
+      if (!cols.length || cols.some(function (c) { return c.s > 40 && c.a > .3; })) return false;  // renkli zemin
+      var v = cols.reduce(function (s, c) { return s + c.l * c.a; }, 0) / cols.length;
+      return v > .3;
+    }
+    function markBorders(n, cs) {   // açık gri kenarlıklar koyulaşır, renkli olanlar kalır
+      [["Top", "dk-bt"], ["Right", "dk-br"], ["Bottom", "dk-bb"], ["Left", "dk-bl"]].forEach(function (sd) {
+        if (parseFloat(cs["border" + sd[0] + "Width"]) <= 0) return;
+        var c = rgbList(cs["border" + sd[0] + "Color"])[0];
+        if (c && c.a > .2 && c.l > .5 && c.s < 40) n.classList.add(sd[1]);
+      });
+    }
+    function markText(n, cs) {
+      var c = rgbList(cs.color)[0];
+      if (!c || c.a < .3 || c.l > .35) return;
+      n.classList.add(c.s > 60 ? "dk-text-accent" : (parseFloat(cs.fontSize) < 13 ? "dk-text-muted" : "dk-text"));
+    }
+    var SKIP = /^(INPUT|TEXTAREA|SELECT|OPTION|BUTTON|SVG|PATH|IMG|CANVAS|VIDEO|IFRAME|SCRIPT|STYLE|BR)$/i;
+    var STOP = /^(BODY|MAIN|SECTION|HTML)$/i;
+    function skip(n) {
+      return SKIP.test(n.tagName) || n.closest("svg, #intro, .btn, .theme-toggle, .lang-toggle, .site-header") ||
+             /\bdk-(surface|inner|card)\b/.test(n.className);
+    }
 
+    // 1) formlar: ana kutu + içindeki kartlar
+    document.querySelectorAll("form").forEach(function (form) {
+      var scope = [form], el = form.parentElement;
+      for (var i = 0; i < 3 && el && !STOP.test(el.tagName) && !el.classList.contains("container"); i++) {
+        scope.push(el); el = el.parentElement;
+      }
+      var outer = document.querySelector(".dk-surface") && form.closest(".dk-surface");
+      scope.forEach(function (box) {
+        var bcs = getComputedStyle(box);
+        if (!box.classList.contains("dk-surface") && isLightBg(box, bcs)) { box.classList.add("dk-surface"); outer = box; markBorders(box, bcs); }
+      });
+      var root = outer || form;
+      root.querySelectorAll("*").forEach(function (n) {
+        if (skip(n)) return;
+        var cs = getComputedStyle(n);
+        if (isLightBg(n, cs)) { n.classList.add("dk-inner"); markBorders(n, cs); }
+        markText(n, cs);
+      });
+    });
+
+    // 2) sayfanın geri kalanı: açık renkli kartlar
+    document.querySelectorAll("main *, footer *").forEach(function (n) {
+      if (skip(n) || n.closest(".dk-surface")) return;
+      var cs = getComputedStyle(n);
+      if (isLightBg(n, cs)) { n.classList.add(n.parentElement && n.parentElement.closest(".dk-card") ? "dk-inner" : "dk-card"); markBorders(n, cs); }
+      markText(n, cs);
+    });
+  }
   /* ---------- Başlat ---------- */
   document.documentElement.classList.remove("no-js");
   var saved = store("gim-lang");
@@ -456,4 +530,6 @@
   startReticles();
   startReveal();
   startCounters();
+  darkSurfaces();
+  window.addEventListener("load", darkSurfaces);
 })();

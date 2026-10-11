@@ -653,3 +653,85 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 20px 44px rgba(0,0,0,.55);
 }
 [data-theme="dark"] .cdw-box { background: rgba(255,255,255,.04); }
+
+/* =========================================================
+   KARANLIK MOD — FORMLAR
+   Sınıf adından bağımsız: sitedeki bütün form alanlarına uygulanır.
+   (!important: form alanlarına başka dosyada verilmiş açık renkleri ezmek için)
+   ========================================================= */
+[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]),
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background: #17191D !important;
+  color: #E6E8EB !important;
+  border-color: #3B4048 !important;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.45) !important;
+}
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder { color: #8A919B !important; opacity: 1; }
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+  border-color: #E8708C !important;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.45), 0 0 0 3px rgba(232,112,140,.22) !important;
+  outline: none;
+}
+[data-theme="dark"] select option,
+[data-theme="dark"] select optgroup { background: #1E2126; color: #E6E8EB; }
+[data-theme="dark"] input:disabled,
+[data-theme="dark"] textarea:disabled,
+[data-theme="dark"] select:disabled { opacity: .55; }
+/* tarayıcının otomatik doldurduğu alanlar (Chrome sarı/beyaz zemin) */
+[data-theme="dark"] input:-webkit-autofill,
+[data-theme="dark"] textarea:-webkit-autofill,
+[data-theme="dark"] select:-webkit-autofill {
+  -webkit-text-fill-color: #E6E8EB !important;
+  -webkit-box-shadow: 0 0 0 1000px #17191D inset !important;
+  caret-color: #E6E8EB;
+}
+/* onay kutuları, seçim düğmeleri, dosya seçici */
+[data-theme="dark"] input[type="checkbox"],
+[data-theme="dark"] input[type="radio"],
+[data-theme="dark"] input[type="range"] { accent-color: #E8708C; }
+[data-theme="dark"] input[type="file"] { color: #A3A9B2; }
+[data-theme="dark"] input[type="file"]::file-selector-button {
+  background: #2C3036; color: #E6E8EB; border: 1px solid #3B4048; border-radius: 6px; padding: 6px 12px; cursor: pointer;
+}
+/* etiketler, başlıklar, yardım metinleri */
+[data-theme="dark"] label,
+[data-theme="dark"] legend { color: #E6E8EB !important; }
+[data-theme="dark"] fieldset { border-color: #3B4048; }
+[data-theme="dark"] form small,
+[data-theme="dark"] form .hint,
+[data-theme="dark"] form .help { color: #A3A9B2; }
+/* =========================================================
+   KARANLIK MOD — OTOMATİK KUTULAR (js/site.js → darkSurfaces)
+   ========================================================= */
+[data-theme="dark"] .dk-surface {
+  background: linear-gradient(180deg, #272A30, #1E2125) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 18px 40px rgba(0,0,0,.45) !important;
+  color: #E6E8EB;
+}
+[data-theme="dark"] .dk-inner {
+  background: rgba(255,255,255,.04) !important;
+  box-shadow: none !important;
+  color: #E6E8EB;
+}
+[data-theme="dark"] .dk-inner:hover { background: rgba(255,255,255,.07) !important; }
+[data-theme="dark"] .dk-inner:has(input:checked) { background: rgba(232,112,140,.12) !important; border-color: #E8708C !important; }
+/* sayfadaki kartlar: zemin koyulaşır, renkli kenarlıklar korunur */
+[data-theme="dark"] .dk-card {
+  background: linear-gradient(180deg, #2A2E34, #22252A) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 8px 22px rgba(0,0,0,.3) !important;
+  color: #E6E8EB;
+}
+[data-theme="dark"] .dk-card:hover { background: linear-gradient(180deg, #30343B, #262A30) !important; }
+/* açık gri kenarlıklar (renkli kenarlıklar korunur) */
+[data-theme="dark"] .dk-bt { border-top-color: #3B4048 !important; }
+[data-theme="dark"] .dk-br { border-right-color: #3B4048 !important; }
+[data-theme="dark"] .dk-bb { border-bottom-color: #3B4048 !important; }
+[data-theme="dark"] .dk-bl { border-left-color: #3B4048 !important; }
+/* koyu yazılmış metinler */
+[data-theme="dark"] .dk-text { color: #E6E8EB !important; }
+[data-theme="dark"] .dk-text-muted { color: #A3A9B2 !important; }
+[data-theme="dark"] .dk-text-accent { color: #E8708C !important; }

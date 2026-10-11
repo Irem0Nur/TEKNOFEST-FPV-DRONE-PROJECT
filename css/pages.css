@@ -546,3 +546,122 @@ a.contact-card:hover b { color: var(--cherry); }
   .gf-bar { width: 80px; }
   .gf-body { padding: 20px 16px; }
 }
+/* =========================================================
+   KARANLIK MOD — İÇ SAYFALAR
+   (Ekip, Sponsorluk, İletişim, Hakkımızda, Yarışma, Teknik)
+   ========================================================= */
+
+/* ---------- Kiraz zemin + beyaz yazı: koyu kiraz kullan (okunurluk) ---------- */
+[data-theme="dark"] .tag--key,
+[data-theme="dark"] .mv-tag,
+[data-theme="dark"] .gf-sec .mono,
+[data-theme="dark"] .m-step.is-key::before,
+[data-theme="dark"] .next-steps li::before,
+[data-theme="dark"] .yes,
+[data-theme="dark"] .zone--a { background: #A8284D; border-color: #A8284D; color: #fff; }
+[data-theme="dark"] .zone--b { background: #1E2126; color: #E8708C; border-color: #E8708C; }
+
+/* ---------- Etiketler, rozetler, ikon daireleri ---------- */
+[data-theme="dark"] .tag,
+[data-theme="dark"] .m-time { background: rgba(255,255,255,.05); }
+[data-theme="dark"] .m-step.is-key .m-time,
+[data-theme="dark"] .ok { border-color: rgba(232,112,140,.4); }
+[data-theme="dark"] .value-ic {
+  background: linear-gradient(180deg, #2C3036, #202328);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+}
+[data-theme="dark"] .callout { border-color: rgba(232,112,140,.35); }
+[data-theme="dark"] .callout p { color: #E9C9D1; }
+[data-theme="dark"] .spec dl div { border-bottom-color: rgba(110,117,127,.45); }
+
+/* ---------- Vurgulu kartlar ---------- */
+[data-theme="dark"] .why-card--answer,
+[data-theme="dark"] .pack--gold {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 4px rgba(232,112,140,.1), 0 16px 36px rgba(0,0,0,.45);
+}
+
+/* ---------- Yarışma: puan çubuğu, tablolar ---------- */
+[data-theme="dark"] .seg--a { background: linear-gradient(180deg, #2A2E34, #22252A); }
+[data-theme="dark"] .seg--b { background: linear-gradient(180deg, #A8284D, #8A1D3C); }
+[data-theme="dark"] .score td,
+[data-theme="dark"] .podium li,
+[data-theme="dark"] .specs th,
+[data-theme="dark"] .specs td,
+[data-theme="dark"] .pack-list li { border-top-color: rgba(80,86,95,.7); }
+
+/* ---------- Teknik: mimari şeması, tablo, formül ---------- */
+[data-theme="dark"] .arch { background: rgba(255,255,255,.025); }
+[data-theme="dark"] .node {
+  background: linear-gradient(180deg, #2A2E34, #22252A);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 4px 12px rgba(0,0,0,.3);
+}
+[data-theme="dark"] .node--key { box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 3px rgba(232,112,140,.14); }
+[data-theme="dark"] .node--side { background: rgba(255,255,255,.04); box-shadow: none; }
+[data-theme="dark"] .table-wrap { background: rgba(255,255,255,.03); }
+[data-theme="dark"] .specs th { background: rgba(255,255,255,.04); }
+[data-theme="dark"] .formula { background: rgba(255,255,255,.04); }
+
+/* ---------- Ekip: "Aradığımız roller" kartları ---------- */
+[data-theme="dark"] .role-btn {
+  background: linear-gradient(90deg, rgba(255,255,255,.07), rgba(255,255,255,.025)) !important;
+  border-color: #3B4048 !important; border-left-color: var(--cherry) !important;
+}
+[data-theme="dark"] .role-btn b { color: #E6E8EB; }
+[data-theme="dark"] .role-btn span { color: #A3A9B2; }
+[data-theme="dark"] .role-btn:hover { background: rgba(232,112,140,.12) !important; }
+[data-theme="dark"] .role-btn.is-picked {
+  background: rgba(232,112,140,.16) !important;
+  border-color: rgba(232,112,140,.5) !important; border-left-color: var(--cherry) !important;
+}
+
+/* ---------- Form kartı (Ekibe Katıl, Sponsor, İletişim) ---------- */
+[data-theme="dark"] .gim-form {
+  background: linear-gradient(180deg, rgba(39,42,48,.95), rgba(30,33,37,.95)) !important;
+  border-color: #3B4048 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 24px 60px rgba(0,0,0,.5), 0 2px 6px rgba(0,0,0,.3) !important;
+}
+[data-theme="dark"] .gf-head { background: linear-gradient(180deg, #17191D, #111316); }
+/* kayan etiketler: boşken gri, yazarken kiraz, doluyken açık gri */
+[data-theme="dark"] .fl label { color: #8A919B !important; }
+[data-theme="dark"] .fl input:focus + label,
+[data-theme="dark"] .fl textarea:focus + label { color: #E8708C !important; }
+[data-theme="dark"] .fl input:not(:focus):not(:placeholder-shown) + label,
+[data-theme="dark"] .fl textarea:not(:focus):not(:placeholder-shown) + label { color: #A3A9B2 !important; }
+[data-theme="dark"] .f-ic { stroke: #7D848E; }
+[data-theme="dark"] .fl:focus-within .f-ic { stroke: #E8708C; }
+[data-theme="dark"] .counter { color: #8A919B; }
+/* hata / geçerli durumları */
+[data-theme="dark"] .err { color: #F08CA2; }
+[data-theme="dark"] .err::before { background: #C2334F; }
+[data-theme="dark"] .invalid.fl input,
+[data-theme="dark"] .invalid.fl textarea { background: rgba(194,51,79,.12) !important; border-color: #E0566F !important; }
+[data-theme="dark"] .invalid .f-ic { stroke: #E0566F; }
+[data-theme="dark"] .fl.is-valid input:not(:focus),
+[data-theme="dark"] .fl.is-valid textarea:not(:focus) { border-color: #4F7A60 !important; }
+[data-theme="dark"] .fl.is-valid::after { border-color: #6CC08B; }
+/* seçim kartları */
+[data-theme="dark"] .opt-box {
+  background: rgba(255,255,255,.04) !important;
+  border-color: #3B4048 !important;
+  box-shadow: none !important;
+}
+[data-theme="dark"] .opt-box b { color: #E6E8EB; }
+[data-theme="dark"] .opt:hover .opt-box { border-color: #575D66 !important; background: rgba(255,255,255,.07) !important; }
+[data-theme="dark"] .opt input:checked + .opt-box {
+  background: linear-gradient(180deg, #A8284D, #8A1D3C) !important;
+  border-color: #E8708C !important; color: #fff;
+  box-shadow: 0 10px 22px rgba(0,0,0,.4) !important;
+}
+[data-theme="dark"] .opt input:checked + .opt-box b { color: #fff; }
+[data-theme="dark"] .invalid .opt-box { border-color: #C2334F !important; }
+/* KVKK onay kutusu */
+[data-theme="dark"] .check {
+  background: rgba(255,255,255,.03) !important;
+  border-color: #4A5059 !important;
+  color: #A3A9B2 !important;
+}
+[data-theme="dark"] .check-box { background: #17191D; border-color: #6E757F; }
+[data-theme="dark"] .check input:checked + .check-box { background: #A8284D; border-color: #A8284D; }
+[data-theme="dark"] .check.invalid { background: rgba(194,51,79,.1) !important; border-color: #C2334F !important; }
+[data-theme="dark"] .form-status.is-ok { color: #6CC08B; }
+[data-theme="dark"] .form-status.is-error { color: #F08CA2; }
